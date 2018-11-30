@@ -1,5 +1,5 @@
 /**
- * ITaskListImpl.java
+ * TaskListImpl.java
  * Created on 21.02.2003, 12:29:54 Alex
  * Package: net.sf.memoranda
  * 
@@ -31,8 +31,8 @@ import nu.xom.Nodes;
 /**
  * 
  */
-/*$Id: ITaskListImpl.java,v 1.14 2006/07/03 11:59:19 alexeya Exp $*/
-public class ITaskListImpl implements ITaskList {
+/*$Id: TaskListImpl.java,v 1.14 2006/07/03 11:59:19 alexeya Exp $*/
+public class TaskListImpl implements ITaskList {
 
     private IProject _I_project = null;
     private Document _doc = null;
@@ -45,16 +45,16 @@ public class ITaskListImpl implements ITaskList {
 	private Hashtable elements = new Hashtable();
     
     /**
-     * Constructor for ITaskListImpl.
+     * Constructor for TaskListImpl.
      */
-    public ITaskListImpl(Document doc, IProject prj) {
+    public TaskListImpl(Document doc, IProject prj) {
         _doc = doc;
         _root = _doc.getRootElement();
         _I_project = prj;
 		buildElements(_root);
     }
     
-    public ITaskListImpl(IProject prj) {
+    public TaskListImpl(IProject prj) {
             _root = new Element("tasklist");
             _doc = new Document(_root);
             _I_project = prj;
@@ -136,7 +136,7 @@ public class ITaskListImpl implements ITaskList {
 		
         Util.debug("Created task with parent " + parentTaskId);
         
-        return new ITaskImpl(el, this);
+        return new TaskImpl(el, this);
     }
 	
 	/**
@@ -168,7 +168,7 @@ public class ITaskListImpl implements ITaskList {
 
     public ITask getTask(String id) {
         Util.debug("Getting task " + id);          
-        return new ITaskImpl(getTaskElement(id), this);
+        return new TaskImpl(getTaskElement(id), this);
     }
     
     public boolean hasParentTask(String id) {
@@ -342,7 +342,7 @@ public class ITaskListImpl implements ITaskList {
         Vector v = new Vector();
 
         for (int i = 0; i < tasks.size(); i++) {
-            ITask t = new ITaskImpl(tasks.get(i), this);
+            ITask t = new TaskImpl(tasks.get(i), this);
             v.add(t);
         }
         return v;

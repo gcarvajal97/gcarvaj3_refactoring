@@ -1,5 +1,5 @@
 /**
- * IEventImpl.java
+ * EventImpl.java
  * Created on 08.03.2003, 13:20:13 Alex
  * Package: net.sf.memoranda
  * 
@@ -21,15 +21,15 @@ import nu.xom.Element;
 /**
  * 
  */
-/*$Id: IEventImpl.java,v 1.9 2004/10/06 16:00:11 ivanrise Exp $*/
-public class IEventImpl implements IEvent, Comparable {
+/*$Id: EventImpl.java,v 1.9 2004/10/06 16:00:11 ivanrise Exp $*/
+public class EventImpl implements IEvent, Comparable {
     
     private Element _element = null;
 
     /**
-     * Constructor for IEventImpl.
+     * Constructor for EventImpl.
      */
-    public IEventImpl(Element elem) {
+    public EventImpl(Element elem) {
         _element = elem;
     }
 

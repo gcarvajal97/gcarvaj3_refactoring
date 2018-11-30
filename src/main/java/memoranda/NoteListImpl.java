@@ -1,5 +1,5 @@
 /**
- * INoteListImpl.java
+ * NoteListImpl.java
  * Created on 21.02.2003, 15:43:26 Alex
  * Package: net.sf.memoranda
  * 
@@ -23,8 +23,8 @@ import nu.xom.Elements;
 /**
  * 
  */
-/*$Id: INoteListImpl.java,v 1.14 2004/10/28 11:30:15 alexeya Exp $*/
-public class INoteListImpl implements INoteList {
+/*$Id: NoteListImpl.java,v 1.14 2004/10/28 11:30:15 alexeya Exp $*/
+public class NoteListImpl implements INoteList {
 
     private IProject _I_project = null;
     private Document _doc = null;
@@ -33,15 +33,15 @@ public class INoteListImpl implements INoteList {
 //    public static final String NS_JNNL = "http://www.openmechanics.org/2003/jnotes-noteslist";
 
     /**
-     * Constructor for INoteListImpl.
+     * Constructor for NoteListImpl.
      */
-    public INoteListImpl(Document doc, IProject prj) {
+    public NoteListImpl(Document doc, IProject prj) {
         _doc = doc;
         _root = _doc.getRootElement();
         _I_project = prj;
     }
 
-    public INoteListImpl(IProject prj) {
+    public NoteListImpl(IProject prj) {
     	
         //_root = new Element("noteslist", NS_JNNL);
         _root = new Element("noteslist");
@@ -63,7 +63,7 @@ public class INoteListImpl implements INoteList {
 					Vector ns = d.getNotes();
 					for(int ni = 0; ni < ns.size(); ni++) {
 						NoteElement n = (NoteElement) ns.get(ni);
-						v.add(new INoteImpl(n.getElement(), _I_project));
+						v.add(new NoteImpl(n.getElement(), _I_project));
 					}
                 }
             }
@@ -88,7 +88,7 @@ public class INoteListImpl implements INoteList {
 					Vector ns = d.getNotes();
 					for(int ni = 0; ni < ns.size(); ni++) {
 						NoteElement ne = (NoteElement) ns.get(ni);
-						INote n = new INoteImpl(ne.getElement(), _I_project);
+						INote n = new NoteImpl(ne.getElement(), _I_project);
 						if (n.isMarked()) v.add(n);
                 }
             }
@@ -116,7 +116,7 @@ public class INoteListImpl implements INoteList {
 								Vector ns = d.getNotes();
 								for(int ni = 0; ni < ns.size(); ni++) {
 									NoteElement n = (NoteElement) ns.get(ni);
-									v.add(new INoteImpl(n.getElement(), _I_project));
+									v.add(new NoteImpl(n.getElement(), _I_project));
 								}
 							}
                         }
@@ -140,11 +140,11 @@ public class INoteListImpl implements INoteList {
 		Vector ns = d.getNotes();
 		if(ns.size()>0) {
 			NoteElement n = (NoteElement) ns.get(0);
-			INote currentINote = new INoteImpl(n.getElement(), _I_project);
+			INote currentINote = new NoteImpl(n.getElement(), _I_project);
 			return currentINote;
 		}
 		return null;
-        //return new INoteImpl(d.getElement(), _I_project);
+        //return new NoteImpl(d.getElement(), _I_project);
     }
 
     public INote createNoteForDate(CalendarDate date) {
@@ -158,7 +158,7 @@ public class INoteListImpl implements INoteList {
         if (d == null) 
             d = m.createDay(date.getDay());
 		NoteElement ne = d.createNote(Util.generateId());
-        return new INoteImpl(ne.getElement(), _I_project);
+        return new NoteImpl(ne.getElement(), _I_project);
     }
     
      /*
@@ -350,7 +350,7 @@ public class INoteListImpl implements INoteList {
         }
 
         /*public INote getNote() {
-            return new INoteImpl(dEl);
+            return new NoteImpl(dEl);
         }*/
 		
 		public NoteElement getNote(String d) {

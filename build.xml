@@ -1,11 +1,11 @@
 <!--- THIS IS AN OLD FILE AND ONLY INCLUDED AS A REFERENCE IN CASE YOU WANT TO TAKE A LOOK -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!--- some exml comment -->
-<project name="Memoranda" default="package" basedir=".">
+<IProject name="Memoranda" default="package" basedir=".">
 	<!-- Build.xml file initially created by Kenneth J. Pouncey              -->
 	<!-- on 5 september 2003.                                                -->
-	<!-- Kenneth is the project-leader of the tn5250j-project on SourceForge -->
-	<!-- Thank you dude for your contribution to our project !               -->
+	<!-- Kenneth is the IProject-leader of the tn5250j-IProject on SourceForge -->
+	<!-- Thank you dude for your contribution to our IProject !               -->
 	<!-- You can reach him through email : kjpou@pt.lu                       -->
 	<!--=====================================================================-->
 	<!--$Id: build.xml,v 1.18 2007/04/06 21:12:24 alexeya Exp $-->
@@ -176,4 +176,4 @@
 			<classpath refid="classpath"/>
 		</java> -->
 	</target>
-</project>
+</IProject>

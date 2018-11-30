@@ -27,8 +27,8 @@ import nu.xom.Node;
 /**
  *
  */
-/*$Id: ITaskImpl.java,v 1.15 2005/12/01 08:12:26 alexeya Exp $*/
-public class ITaskImpl implements ITask, Comparable {
+/*$Id: TaskImpl.java,v 1.15 2005/12/01 08:12:26 alexeya Exp $*/
+public class TaskImpl implements ITask, Comparable {
 
     private Element _element = null;
     private ITaskList _tl = null;
@@ -36,7 +36,7 @@ public class ITaskImpl implements ITask, Comparable {
     /**
      * Constructor for DefaultTask.
      */
-    public ITaskImpl(Element taskElement, ITaskList tl) {
+    public TaskImpl(Element taskElement, ITaskList tl) {
         _element = taskElement;
         _tl = tl;
     }
@@ -93,7 +93,7 @@ public class ITaskImpl implements ITask, Comparable {
     	if (parentNode instanceof Element) {
     	    Element parent = (Element) parentNode;
         	if (parent.getLocalName().equalsIgnoreCase("task")) 
-        	    return new ITaskImpl(parent, _tl);
+        	    return new TaskImpl(parent, _tl);
     	}
     	return null;
 	}
@@ -357,7 +357,7 @@ public class ITaskImpl implements ITask, Comparable {
 	private Collection convertToTaskObjects(Elements tasks) {
         Vector v = new Vector();
         for (int i = 0; i < tasks.size(); i++) {
-            ITask t = new ITaskImpl(tasks.get(i), _tl);
+            ITask t = new TaskImpl(tasks.get(i), _tl);
             v.add(t);
         }
         return v;
@@ -370,7 +370,7 @@ public class ITaskImpl implements ITask, Comparable {
 		Elements subTasks = _element.getChildElements("task");
 		for (int i = 0; i < subTasks.size(); i++) {
 			if (subTasks.get(i).getAttribute("id").getValue().equals(id))
-				return new ITaskImpl(subTasks.get(i), _tl);
+				return new TaskImpl(subTasks.get(i), _tl);
 		}
 		return null;
 	}

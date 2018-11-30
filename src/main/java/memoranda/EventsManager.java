@@ -102,7 +102,7 @@ public class EventsManager {
 		if (d != null) {
 			Elements els = d.getElement().getChildElements("event");
 			for (int i = 0; i < els.size(); i++)
-				v.add(new IEventImpl(els.get(i)));
+				v.add(new EventImpl(els.get(i)));
 		}
 		Collection r = getRepeatableEventsForDate(date);
 		if (r.size() > 0)
@@ -126,7 +126,7 @@ public class EventsManager {
 		if (d == null)
 			d = createDay(date);
 		d.getElement().appendChild(el);
-		return new IEventImpl(el);
+		return new EventImpl(el);
 	}
 
 	public static IEvent createRepeatableEvent(
@@ -156,7 +156,7 @@ public class EventsManager {
 		el.addAttribute(new Attribute("workingDays",String.valueOf(workDays)));
 		el.appendChild(text);
 		rep.appendChild(el);
-		return new IEventImpl(el);
+		return new EventImpl(el);
 	}
 
 	public static Collection getRepeatableEvents() {
@@ -166,7 +166,7 @@ public class EventsManager {
 			return v;
 		Elements els = rep.getChildElements("event");
 		for (int i = 0; i < els.size(); i++)
-			v.add(new IEventImpl(els.get(i)));
+			v.add(new EventImpl(els.get(i)));
 		return v;
 	}
 
@@ -235,7 +235,7 @@ public class EventsManager {
 				== hh)
 				&& (new Integer(el.getAttribute("min").getValue()).intValue()
 					== mm))
-				return new IEventImpl(el);
+				return new EventImpl(el);
 		}
 		return null;
 	}
@@ -406,7 +406,7 @@ public class EventsManager {
 		}
 
 		/*
-		 * public INote getNote() { return new INoteImpl(dEl);
+		 * public INote getNote() { return new NoteImpl(dEl);
 		 */
 
 		public Element getElement() {

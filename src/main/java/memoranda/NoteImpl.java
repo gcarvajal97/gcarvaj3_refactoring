@@ -1,5 +1,5 @@
 /**
- * INoteImpl.java
+ * NoteImpl.java
  * Created on 13.02.2003, 15:36:55 Alex
  * Package: net.sf.memoranda
  * 
@@ -17,16 +17,16 @@ import nu.xom.Element;
 /**
  * 
  */
-/*$Id: INoteImpl.java,v 1.6 2004/10/06 19:15:44 ivanrise Exp $*/
-public class INoteImpl implements INote, Comparable {
+/*$Id: NoteImpl.java,v 1.6 2004/10/06 19:15:44 ivanrise Exp $*/
+public class NoteImpl implements INote, Comparable {
     
     private Element _el = null; 
     private IProject _I_project;
     
     /**
-     * Constructor for INoteImpl.
+     * Constructor for NoteImpl.
      */
-    public INoteImpl(Element el, IProject IProject) {
+    public NoteImpl(Element el, IProject IProject) {
         _el = el;
         _I_project = IProject;
     }

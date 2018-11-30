@@ -52,7 +52,7 @@ public class ProjectManager {
         for (int i = 0; i < prjs.size(); i++) {
             String pid = ((Element) prjs.get(i)).getAttribute("id").getValue();
             if (pid.equals(id)) {
-                return new IProjectImpl((Element) prjs.get(i));
+                return new ProjectImpl((Element) prjs.get(i));
             }
         }
         return null;
@@ -62,7 +62,7 @@ public class ProjectManager {
         Elements prjs = _root.getChildElements("project");
         Vector v = new Vector();
         for (int i = 0; i < prjs.size(); i++)
-            v.add(new IProjectImpl((Element) prjs.get(i)));
+            v.add(new ProjectImpl((Element) prjs.get(i)));
         return v;
     }
 
@@ -81,7 +81,7 @@ public class ProjectManager {
         Elements prjs = _root.getChildElements("project");
         Vector v = new Vector();
         for (int i = 0; i < prjs.size(); i++) {
-            IProject prj = new IProjectImpl((Element) prjs.get(i));
+            IProject prj = new ProjectImpl((Element) prjs.get(i));
             if (prj.getStatus() == IProject.ACTIVE)
                 v.add(prj);
         }
@@ -92,7 +92,7 @@ public class ProjectManager {
         Elements prjs = _root.getChildElements("project");
         int count = 0;
         for (int i = 0; i < prjs.size(); i++) {
-            IProject prj = new IProjectImpl((Element) prjs.get(i));
+            IProject prj = new ProjectImpl((Element) prjs.get(i));
             if (prj.getStatus() == IProject.ACTIVE)
                 count++;
         }
@@ -103,7 +103,7 @@ public class ProjectManager {
         Element el = new Element("project");
         el.addAttribute(new Attribute("id", id));
         _root.appendChild(el);
-        IProject prj = new IProjectImpl(el);
+        IProject prj = new ProjectImpl(el);
         prj.setTitle(title);
         prj.setStartDate(startDate);
         prj.setEndDate(endDate);

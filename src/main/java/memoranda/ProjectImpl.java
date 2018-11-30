@@ -1,5 +1,5 @@
 /**
- * IProjectImpl.java
+ * ProjectImpl.java
  * Created on 11.02.2003, 23:06:22 Alex
  * Package: net.sf.memoranda
  * 
@@ -17,15 +17,15 @@ import nu.xom.Element;
 /**
  * Default implementation of IProject interface
  */
-/*$Id: IProjectImpl.java,v 1.7 2004/11/22 10:02:37 alexeya Exp $*/
-public class IProjectImpl implements IProject {
+/*$Id: ProjectImpl.java,v 1.7 2004/11/22 10:02:37 alexeya Exp $*/
+public class ProjectImpl implements IProject {
 
     private Element _root = null;
 
     /**
-     * Constructor for IProjectImpl.
+     * Constructor for ProjectImpl.
      */
-    public IProjectImpl(Element root) {
+    public ProjectImpl(Element root) {
         _root = root;
     }
 

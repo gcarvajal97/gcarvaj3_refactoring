@@ -23,7 +23,7 @@ import memoranda.*;
 import memoranda.interfaces.*;
 import memoranda.interfaces.IProject;
 import memoranda.interfaces.IResourcesList;
-import memoranda.IResourcesListImpl;
+import memoranda.ResourcesListImpl;
 import memoranda.date.CalendarDate;
 import memoranda.ui.ExceptionDialog;
 import memoranda.ui.htmleditor.AltHTMLWriter;
@@ -280,12 +280,12 @@ public class FileStorage implements IStorage {
                 // reload from new file
                 tasklistDoc = openDocument(fn);
             }*/
-            return new ITaskListImpl(tasklistDoc, prj);
+            return new TaskListImpl(tasklistDoc, prj);
         }
         else {
             /*DEBUG*/
             System.out.println("[DEBUG] New task list created");
-            return new ITaskListImpl(prj);
+            return new TaskListImpl(prj);
         }
     }
 
@@ -325,12 +325,12 @@ public class FileStorage implements IStorage {
                     + prj.getID()
                     + File.separator
                     + ".notes");
-            return new INoteListImpl(openDocument(fn), prj);
+            return new NoteListImpl(openDocument(fn), prj);
         }
         else {
             /*DEBUG*/
             System.out.println("[DEBUG] New INote list created");
-            return new INoteListImpl(prj);
+            return new NoteListImpl(prj);
         }
     }
     /**
@@ -411,12 +411,12 @@ public class FileStorage implements IStorage {
         if (documentExists(fn)) {
             /*DEBUG*/
             System.out.println("[DEBUG] Open resources list: " + fn);
-            return new IResourcesListImpl(openDocument(fn), prj);
+            return new ResourcesListImpl(openDocument(fn), prj);
         }
         else {
             /*DEBUG*/
             System.out.println("[DEBUG] New INote list created");
-            return new IResourcesListImpl(prj);
+            return new ResourcesListImpl(prj);
         }
     }
     /**

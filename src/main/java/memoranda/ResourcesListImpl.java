@@ -1,5 +1,5 @@
 /**
- * IResourcesListImpl.java
+ * ResourcesListImpl.java
  * Created on 24.03.2003, 18:30:31 Alex
  * Package: net.sf.memoranda
  *
@@ -24,23 +24,23 @@ import nu.xom.Elements;
 /**
  *
  */
-/*$Id: IResourcesListImpl.java,v 1.5 2007/03/20 06:21:46 alexeya Exp $*/
-public class IResourcesListImpl implements IResourcesList {
+/*$Id: ResourcesListImpl.java,v 1.5 2007/03/20 06:21:46 alexeya Exp $*/
+public class ResourcesListImpl implements IResourcesList {
     
 	private IProject _I_project = null;
     private Document _doc = null;
     private Element _root = null;
 
     /**
-     * Constructor for ITaskListImpl.
+     * Constructor for TaskListImpl.
      */
-    public IResourcesListImpl(Document doc, IProject prj) {
+    public ResourcesListImpl(Document doc, IProject prj) {
         _doc = doc;
         _root = _doc.getRootElement();
         _I_project = prj;
     }
 
-    public IResourcesListImpl(IProject prj) {
+    public ResourcesListImpl(IProject prj) {
             _root = new Element("resources-list");
             _doc = new Document(_root);
             _I_project = prj;

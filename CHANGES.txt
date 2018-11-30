@@ -5,7 +5,7 @@ Done by Cristian Andrade
 Done since Memoranda 1.0-RC3 (20050517)
 
 - Fixed: Dates in TaskTable were not localized
-- Patch '[ 1681680 ] File upload as project ressource' applied
+- Patch '[ 1681680 ] File upload as IProject ressource' applied
 - Fixed: memoranda.bat
 - Bug [1590113] is fixed partially (TaskTable tooltips are disabled over to-do labels)
 - Fixed: [1571820] Spaces in resource names
@@ -13,12 +13,12 @@ Done since Memoranda 1.0-RC3 (20050517)
 
 Done since Memoranda 1.0-RC2 (20050517)
 
-- New task searching algorythm implemented (no XPath queries). The following
+- New ITask searching algorythm implemented (no XPath queries). The following
 libraries are excluded: saxon8.jar, saxon8-xom.jar, nux.jar [alexeya] 
 - Antialiasing of text in notes [alexeya]
 - Editor fonts customization implemented (Preferences dialog) [alexeya]
 - "Endless tasks" logic improved [alexeya]
-- Fixed:NullPointer when LAST_OPENED_PROJECT_ID references to missing project [alexeya]
+- Fixed:NullPointer when LAST_OPENED_PROJECT_ID references to missing IProject [alexeya]
 - Fixed:I18N: bug with unicode characters input (htmleditor) [alexeya]
 - HTMLEditor code is moved into main codebase (net.sf.memoranda.ui.htmleditor
   package) [alexeya]
@@ -40,17 +40,17 @@ Done since Memoranda 1.0b3-20040322
 
 - CHECK_IF_ALREADY_STARTED configuration option added, FAQ updated 
   (submitted by Michael Radtke <mradtke@abigale.de>)[alexeya]
-- New feature: Preview a note with web-browser [alexeya]
+- New feature: Preview a INote with web-browser [alexeya]
 - Icons updated [alexeya]
 - Configurable port number (PORT_NUMBER property added)
   (see also FAQ.txt) [alexeya]
 - Fixed: Incompatibility with old notes format. [alexeya]
-- "File->New note" menu item added [alexeya]
+- "File->New INote" menu item added [alexeya]
 - Fixed: fixed compile warnings on java 1.5
 - Feature: delete notes using the DELETE key [ivanrise]
 - Fixed: [ 1046374 ] not active selected notes [ivanrise]
-- Fixed: Current note is not changed when another project is selected [alexeya]
-- TaskPanel: "Complete task" icon added, "Show active only" implemented
+- Fixed: Current INote is not changed when another IProject is selected [alexeya]
+- TaskPanel: "Complete ITask" icon added, "Show active only" implemented
   as checkbox in context menu (for consistency with projects menu) [alexeya] 
 - Nicer color for day with notes in calendar [alexeya]
 - Some configuration hack options added (memoranda.properties): 
@@ -59,18 +59,18 @@ Done since Memoranda 1.0b3-20040322
     USER_CSS - overrides default CSS file for notes editor
     LOCALES_DIR - overrides default dir to search local messages      [alexeya] 
 - New feature:  848119    Daily Events : Only Working days [ivanrise]
-- New feature: [ 1042012 ] Change task sort order with "status" [ivanrise]
+- New feature: [ 1042012 ] Change ITask sort order with "status" [ivanrise]
 - We do not need the hoar's quicksort now. Tasks, Events and notes are sorted 
     using the Comparable interface.[ivanrise]
 - Feature: [ 1039131 ] DEL deletes Project (projects/tasks/events/resources) [ivanrise]
 - Fixed: [ 1039507 ] endless tasks displayed with wrong colors [ivanrise]
-- Added new icons to the task panel
+- Added new icons to the ITask panel
 - Fixed: [ 1039443 ] calendar panel not updated [ivanrise]
 - Fixed: [ 1039112 ] Translation Hints [ivanrise]
 - Fixed: [ 899395 ] Memoranda crashes on JVM 1.5.0 [ivanrise]
 - Fixed: [ 1038393 ] Wrong window dimensions [ivanrise]
 - Fixed: [ 1038044 ] Problems with date selection [ivanrise]
-- New feature: [ 934556 ] Multiple notes per project per day [ivanrise]
+- New feature: [ 934556 ] Multiple notes per IProject per day [ivanrise]
   At the moment there are no changes at the user interface. All notes ares
   displayed in the notelist. I just added a new button on the editor panel
   so we can create multiple notes on one day.
@@ -81,9 +81,9 @@ Done since Memoranda 1.0b3-20040322
 - Fixed: Bug 988998: End date is not working on new projects dialog [ivanrise]
 - End date on tasks default state is now not enabled. [ivanrise] 
 - Request:843536 Event PopUp-Dialog(Reconstruct).It now looks better [ivanrise]
-- New feature: added task descriptions [rawsushi]
+- New feature: added ITask descriptions [rawsushi]
 - Show active tasks only will now show ACTIVE, DEADLINE and FAILED tasks instead of filtering by date [rawsushi]
-- New feature: Complete task will automatically set the
+- New feature: Complete ITask will automatically set the
   %done to 100%. (we need a new icon) [rawsushi / commit ivanrise]
 - New feature: Show active tasks only (we need a new icon) [rawsushi / commit ivanrise]
 - Fixed: Bug 965280: tasks with no end date are not displayed in agenda [ivanrise]
@@ -100,7 +100,7 @@ Done since Memoranda 1.0b3-20040322
 Done since Memoranda 1.0b-20031127
 
 - Chinese messages file added (messages_zh.properties) (submitted by <liu-610@163.com>) [alexeya]
-- Current project title in the window titlebar [alexeyA]
+- Current IProject title in the window titlebar [alexeyA]
 - Fixed : Bug 892368 : Bug on moving TaskTable columns. [ivanrise]
 - All codebase: Comment with CVS Id keyword added [alexeyA]
 - build.xml: App.VERSION_INFO and App.BUILD_INFO values are set at buildtime [alexeyA]
@@ -116,9 +116,9 @@ Done since Memoranda 1.0b-20031127
 - Fixed : Broken ResourceTypeDialog [alexeyA]
 - Fixed : Alt+PgUp and Alt+PgDn shortcuts are rejected 'cause of the conflict with systray4j [alexeyA]
 - Fixed : "Enable L10N" option had no effect for HTMLEditor. [alexeyA]
-- Fixed : NullPointerException when packing project 
+- Fixed : NullPointerException when packing IProject
           (please use Util.getEnvDir() in place of hardcoded "{userhome}/.memoranda" path everywhere) [alexeyA]
-- Fixed : Broken new project creation (commented line 324 at ProjectDialog.java) [alexeyA]
+- Fixed : Broken new IProject creation (commented line 324 at ProjectDialog.java) [alexeyA]
 - Fixed bug in sorting-routine for the notes [ivanrise]
 
 Done since Memoranda 1.0a-20031102 release:
@@ -127,16 +127,16 @@ Done since Memoranda 1.0a-20031102 release:
 - Fixed : Bug 846487 : html-editor : Alternative Font Dialog [pbielen]
 - Fixed : Bug 819143 : Task (sorting on priority) needs to be fixed [jcscoobyrs]
 - Fixed : Bug 843516 : Mouse-event problems on tasks-table [jcscoobyrs]
-- Fixed : Bug 827348 : Delete note from pane [ivanrise]
+- Fixed : Bug 827348 : Delete INote from pane [ivanrise]
 - Fixed : Bug 830064 : html-editor: object properties [pbielen]
 - Fixed : Bug 842351 : html-editor : Insert Table Dialog [pbielen]
 - Fixed : Unpacked projects where not being displayed when projectsPanel was expanded. [ivanrise]
-- Fixed : Bug 843991 - Pack and Unpack project [jcscoobyrs]
+- Fixed : Bug 843991 - Pack and Unpack IProject [jcscoobyrs]
 - Fixed : Bug 844003 : Project-Preferences-Dialog broken when using quickmenu [pbielen]
 - Fixed : Bug 819144 : Export of notes (html) [jcscoobyrs]
 - Fixed : Bug with alarmB and taskB on dailyItemsPanel
   + System menus where not being disabled when using these buttons. [ivanrise]
-- Fixed : Bug 842461 - Clear note [ivanrise]
+- Fixed : Bug 842461 - Clear INote [ivanrise]
 - Fixed : Bug 842343 - html-editor : search and replace-dialog [pbielen]
 - Fixed : Bug 819131 - New Event Dialog (DateSpinners) [jcscoobyrs]
 - Fixed : Bug 838861 - html-editor : Image Dialog closing [pbielen]
@@ -158,13 +158,13 @@ Done since Memoranda 1.0a-20031102 release:
 Done since Memoranda 1.0a-20031028 release:
 
 - Fixed: 832424    Troubles with popups. [ivanrise]
-- Fixed: 827420 Add new project fixed. [ivanrise]
+- Fixed: 827420 Add new IProject fixed. [ivanrise]
 - Fixed: 832584 New Task Dialog Closing. [ivanrise]
 - Fixed: 832577 New Project Dialog Closing bug. [ivanrise]
 - Fixed: Bug in new resource dialog. It was possible to click the ok button when no text was set. [ivanrise] 
 - Fixed: Bugs related to the projects menu. [ivanrise]
-- Fixed: Bug related to project proerties. Properties were not displayed until selection changed.
-- Now it's possible to remove more than one project at once. [ivanrise]
+- Fixed: Bug related to IProject proerties. Properties were not displayed until selection changed.
+- Now it's possible to remove more than one IProject at once. [ivanrise]
 - Now it's possible to remove more than one event at once. [ivanrise]
 
 Done since Memoranda 1.0a-20031017 release:                          
@@ -187,7 +187,7 @@ Done since Memoranda 1.0a-20031017 release:
   + removed the extra row, but leaved the code in it for future use.
   = Now gui looks good in XP and Kunststoff-look.
 - Fixed: File - New Project now working [pbielen]
-- Fixed bug regarded to deletion of project and it's history [ivanrise]
+- Fixed bug regarded to deletion of IProject and it's history [ivanrise]
 - Fixed: a bug when deleting an event, there where troubles with selected event. [ivanrise]
 - Localization of the preferences dialog and XP-look of browse dialog in it. [pbielen]
 - Fixed: Search-button in search panel disapeared because of translated lines on other languages. [pbielen]
@@ -211,7 +211,7 @@ Done since Memoranda 1.0a-20030930 release:
 - FIXED: Missing icon src/net/sf/memoranda/ui/resources/icons/calendar.png added.
 - Splash screen and SHOW_SPLASH property added [alexeya]
 - Implemented restoring the frame size and location from previous session [alexeya]
-- FIXED: Bug when current note text is not saved on exit [alexeya]
+- FIXED: Bug when current INote text is not saved on exit [alexeya]
 - Selected panel is stored in context [alexeya]
 
 
@@ -225,7 +225,7 @@ Done since Memoranda 1.0a-20030930 release:
                          Memoranda 1.0a-20030930 release:
 ===================================================================================
 
-The project has been moved from jnotes.sf.net. The current version was renamed 
+The IProject has been moved from jnotes.sf.net. The current version was renamed
 to "Memoranda 1.0 alpha".
 
 ===================================================================================
@@ -260,7 +260,7 @@ Done since jNotes 2.0a-20030902 release:
 - BUGS.txt file added [alexeyA]
 - FIXED: Non-localized messages. [alexeyA] [pbielen]
     * Dutch (be and nl) Translation-files added & updated (last 10032003)
-    * Pack project Dialog now localized (one fact left... Home-dir ?)
+    * Pack IProject Dialog now localized (one fact left... Home-dir ?)
 - FIXED: Bug that editor content is not saved on exit [alexeyA]
 - FIXED: HTMLEditor is localized . [alexeyA] [pbielen]
 - Spanish messages file added (messages_es.properties)
@@ -276,7 +276,7 @@ Done since jNotes 2.0a-20030902 release:
 - Hiding/showing the AppFrame instead of destroying/restoring the window. 
   [alexeyA]
 - FIXED: Immediately updating of the Indicators and Calendar labels [alexeyA]
-- Colouring the task dates in Calendar when task is selected. [alexeyA]
+- Colouring the ITask dates in Calendar when ITask is selected. [alexeyA]
 - System tray icon image for KDE added 
   (src\org\openmechanics\jnotes\ui\resources\icons\jnotes.xpm) [alexeyA]
 - Changing of system tray icon and icon's tooltip for notifying about scheduled
