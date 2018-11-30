@@ -1,4 +1,4 @@
-package memoranda.ui;
+package memoranda.interfaces;
 
 import java.awt.event.ActionListener;
 

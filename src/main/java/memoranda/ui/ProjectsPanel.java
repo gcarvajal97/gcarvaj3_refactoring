@@ -34,12 +34,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import memoranda.CurrentProject;
-import memoranda.NoteList;
-import memoranda.Project;
-import memoranda.ProjectListener;
+import memoranda.interfaces.*;
 import memoranda.ProjectManager;
-import memoranda.ResourcesList;
-import memoranda.TaskList;
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;
 import memoranda.date.DateListener;
@@ -382,7 +378,7 @@ public class ProjectsPanel extends JPanel implements ExpandablePanel {
 			i < prjTablePanel.projectsTable.getSelectedRows().length;
 			i++) {
 			prj =
-				(memoranda.Project) prjTablePanel
+				(Project) prjTablePanel
 					.projectsTable
 					.getModel()
 					.getValueAt(

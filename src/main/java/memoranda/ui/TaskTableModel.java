@@ -21,16 +21,15 @@
 package memoranda.ui;
 
 import javax.swing.event.*;
-import javax.swing.tree.TreePath;
 
 import memoranda.*;
 import memoranda.date.CurrentDate;
+import memoranda.interfaces.Project;
+import memoranda.interfaces.Task;
 import memoranda.ui.treetable.AbstractTreeTableModel;
-import memoranda.ui.treetable.TreeTableModel;
+import memoranda.interfaces.TreeTableModel;
 import memoranda.util.Context;
 import memoranda.util.Local;
-
-import java.util.Hashtable;
 
 /**
  * JAVADOC:
@@ -60,21 +59,21 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
     }
 
     /**
-     * @see memoranda.ui.treetable.TreeTableModel#getColumnCount()
+     * @see TreeTableModel#getColumnCount()
      */
     public int getColumnCount() {
         return columnNames.length;
     }
 
     /**
-     * @see memoranda.ui.treetable.TreeTableModel#getColumnName(int)
+     * @see TreeTableModel#getColumnName(int)
      */
     public String getColumnName(int column) {
         return columnNames[column];
     }
 
     /**
-     * @see memoranda.ui.treetable.TreeTableModel#getValueAt(java.lang.Object,
+     * @see TreeTableModel#getValueAt(java.lang.Object,
      *      int)
      */
     public Object getValueAt(Object node, int column) {
@@ -172,7 +171,7 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
     }
 
     /**
-     * @see memoranda.ui.treetable.TreeTableModel#getColumnClass(int)
+     * @see TreeTableModel#getColumnClass(int)
      */
     public Class getColumnClass(int column) {
         try {

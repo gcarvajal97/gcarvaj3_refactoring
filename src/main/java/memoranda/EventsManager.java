@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Collections;
 
 import memoranda.date.CalendarDate;
+import memoranda.interfaces.Event;
 import memoranda.util.CurrentStorage;
 import memoranda.util.Util;
 

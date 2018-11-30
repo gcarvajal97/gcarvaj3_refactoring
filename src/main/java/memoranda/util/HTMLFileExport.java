@@ -20,7 +20,7 @@ import org.apache.xml.serialize.XMLSerializer;
 import org.cyberneko.html.parsers.SAXParser;
 import org.xml.sax.InputSource;
 
-import memoranda.Note;
+import memoranda.interfaces.Note;
 import memoranda.ui.ExceptionDialog;
 import memoranda.ui.htmleditor.AltHTMLWriter;
 /**

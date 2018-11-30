@@ -7,6 +7,9 @@
  * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
  */
 package memoranda;
+import memoranda.interfaces.Event;
+import memoranda.interfaces.EventNotificationListener;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;

@@ -9,6 +9,8 @@
 package memoranda;
 
 import memoranda.date.CalendarDate;
+import memoranda.interfaces.Note;
+import memoranda.interfaces.Project;
 
 /**
  * 

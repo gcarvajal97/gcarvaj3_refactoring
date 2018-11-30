@@ -11,8 +11,10 @@ import java.util.Collections;
 
 import javax.swing.text.html.HTMLDocument;
 
-import memoranda.*;
 import memoranda.date.CalendarDate;
+import memoranda.interfaces.Note;
+import memoranda.interfaces.NoteList;
+import memoranda.interfaces.Project;
 import memoranda.ui.*;
 import memoranda.ui.htmleditor.AltHTMLWriter;
 
@@ -34,8 +36,8 @@ public class ProjectExporter {
     static String charsetString = "\n";
 
     public static void export(Project prj, File f, String charset,
-            boolean xhtml, boolean chunked, boolean navigation, boolean num,
-            boolean titlesAsHeaders, boolean copyImages) {
+                              boolean xhtml, boolean chunked, boolean navigation, boolean num,
+                              boolean titlesAsHeaders, boolean copyImages) {
 
         _num = num;
         _chunked = chunked;

@@ -20,6 +20,8 @@ import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import memoranda.interfaces.HistoryListener;
+import memoranda.interfaces.Project;
 import memoranda.util.Local;
 /**
  * 

@@ -18,7 +18,7 @@ import javax.swing.JTable;
 
 import memoranda.CurrentProject;
 import memoranda.EventsManager;
-import memoranda.Task;
+import memoranda.interfaces.Task;
 import memoranda.date.CalendarDate;
 /**
  *

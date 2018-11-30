@@ -6,10 +6,12 @@
  * @author Alex V. Alishevskikh, alex@openmechanics.net
  * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
  */
-package memoranda;
+package memoranda.interfaces;
 import java.util.Collection;
 
 import memoranda.date.CalendarDate;
+import memoranda.interfaces.Note;
+
 /**
  * 
  */

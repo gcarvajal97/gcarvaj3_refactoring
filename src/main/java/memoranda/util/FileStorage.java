@@ -20,14 +20,12 @@ import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 
 import memoranda.EventsManager;
-import memoranda.Note;
-import memoranda.NoteList;
+import memoranda.interfaces.*;
 import memoranda.NoteListImpl;
-import memoranda.Project;
+import memoranda.interfaces.Project;
 import memoranda.ProjectManager;
-import memoranda.ResourcesList;
+import memoranda.interfaces.ResourcesList;
 import memoranda.ResourcesListImpl;
-import memoranda.TaskList;
 import memoranda.TaskListImpl;
 import memoranda.date.CalendarDate;
 import memoranda.ui.ExceptionDialog;
@@ -106,7 +104,7 @@ public class FileStorage implements Storage {
     }
 
     /**
-     * @see memoranda.util.Storage#storeNote(memoranda.Note)
+     * @see memoranda.util.Storage#storeNote(Note)
      */
     public void storeNote(Note note, javax.swing.text.Document doc) {
         String filename =
@@ -158,7 +156,7 @@ public class FileStorage implements Storage {
 
     }
     /**
-     * @see memoranda.util.Storage#openNote(memoranda.Note)
+     * @see memoranda.util.Storage#openNote(Note)
      */
     public javax.swing.text.Document openNote(Note note) {
 
@@ -251,7 +249,7 @@ public class FileStorage implements Storage {
         saveDocument(ProjectManager._doc, JN_DOCPATH + ".projects");
     }
     /**
-     * @see memoranda.util.Storage#removeProject(memoranda.Project)
+     * @see memoranda.util.Storage#removeProject(Project)
      */
     public void removeProjectStorage(Project prj) {
         String id = prj.getID();
@@ -307,7 +305,7 @@ public class FileStorage implements Storage {
         saveDocument(tasklistDoc,JN_DOCPATH + prj.getID() + File.separator + ".tasklist");
     }
     /**
-     * @see memoranda.util.Storage#createProjectStorage(memoranda.Project)
+     * @see memoranda.util.Storage#createProjectStorage(Project)
      */
     public void createProjectStorage(Project prj) {
         /*DEBUG*/
@@ -317,7 +315,7 @@ public class FileStorage implements Storage {
         dir.mkdirs();
     }
     /**
-     * @see memoranda.util.Storage#openNoteList(memoranda.Project)
+     * @see memoranda.util.Storage#openNoteList(Project)
      */
     public NoteList openNoteList(Project prj) {
         String fn = JN_DOCPATH + prj.getID() + File.separator + ".notes";
@@ -339,7 +337,7 @@ public class FileStorage implements Storage {
         }
     }
     /**
-     * @see memoranda.util.Storage#storeNoteList(memoranda.NoteList, memoranda.Project)
+     * @see memoranda.util.Storage#storeNoteList(NoteList, Project)
      */
     public void storeNoteList(NoteList nl, Project prj) {
         /*DEBUG*/
@@ -409,7 +407,7 @@ public class FileStorage implements Storage {
         saveDocument(MimeTypesList._doc, JN_DOCPATH + ".mimetypes");
     }
     /**
-     * @see memoranda.util.Storage#openResourcesList(memoranda.Project)
+     * @see memoranda.util.Storage#openResourcesList(Project)
      */
     public ResourcesList openResourcesList(Project prj) {
         String fn = JN_DOCPATH + prj.getID() + File.separator + ".resources";
@@ -425,7 +423,7 @@ public class FileStorage implements Storage {
         }
     }
     /**
-     * @see memoranda.util.Storage#storeResourcesList(memoranda.ResourcesList, memoranda.Project)
+     * @see memoranda.util.Storage#storeResourcesList(ResourcesList, Project)
      */
     public void storeResourcesList(ResourcesList rl, Project prj) {
         /*DEBUG*/

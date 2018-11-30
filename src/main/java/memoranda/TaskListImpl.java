@@ -14,6 +14,9 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import memoranda.date.CalendarDate;
+import memoranda.interfaces.Project;
+import memoranda.interfaces.Task;
+import memoranda.interfaces.TaskList;
 import memoranda.util.Util;
 import nu.xom.Attribute;
 import nu.xom.Document;
@@ -137,7 +140,7 @@ public class TaskListImpl implements TaskList {
     }
 	
 	/**
-     * @see net.sf.memoranda.TaskList#removeTask(import net.sf.memoranda.Task)
+     * @see net.sf.memoranda.TaskList#removeTask(import net.sf.memoranda.interfaces.Task)
      */
 
     public void removeTask(Task task) {
@@ -187,7 +190,7 @@ public class TaskListImpl implements TaskList {
     }
 
     /**
-     * @see memoranda.TaskList#getXMLContent()
+     * @see TaskList#getXMLContent()
      */	 
     public Document getXMLContent() {
         return _doc;

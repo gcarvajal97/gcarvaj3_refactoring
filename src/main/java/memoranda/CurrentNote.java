@@ -1,5 +1,8 @@
 package memoranda;
 
+import memoranda.interfaces.Note;
+import memoranda.interfaces.NoteListener;
+
 import java.util.Collection;
 import java.util.Vector;
 

@@ -22,12 +22,12 @@ import javax.swing.event.CaretEvent;
 import javax.swing.text.Document;
 
 import memoranda.CurrentProject;
-import memoranda.Note;
-import memoranda.NoteList;
-import memoranda.Project;
-import memoranda.ProjectListener;
-import memoranda.ResourcesList;
-import memoranda.TaskList;
+import memoranda.interfaces.Note;
+import memoranda.interfaces.NoteList;
+import memoranda.interfaces.Project;
+import memoranda.interfaces.ProjectListener;
+import memoranda.interfaces.ResourcesList;
+import memoranda.interfaces.TaskList;
 import memoranda.util.CurrentStorage;
 import memoranda.util.Local;
 

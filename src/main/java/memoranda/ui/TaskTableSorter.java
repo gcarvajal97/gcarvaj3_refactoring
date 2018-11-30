@@ -2,13 +2,11 @@ package memoranda.ui;
 
 import javax.swing.*;
 import javax.swing.table.*;
-import javax.swing.tree.*;
 
 import memoranda.*;
 import memoranda.date.*;
-import memoranda.util.*;
-
-import javax.swing.event.*;
+import memoranda.interfaces.Project;
+import memoranda.interfaces.Task;
 
 import java.awt.*;
 import java.awt.event.*;

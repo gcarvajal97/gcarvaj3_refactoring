@@ -10,7 +10,6 @@ import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,19 +19,20 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
 import memoranda.CurrentProject;
-import memoranda.EventNotificationListener;
+import memoranda.interfaces.EventNotificationListener;
 import memoranda.EventsManager;
 import memoranda.EventsScheduler;
 import memoranda.History;
-import memoranda.NoteList;
-import memoranda.Project;
-import memoranda.ProjectListener;
+import memoranda.interfaces.NoteList;
+import memoranda.interfaces.Project;
+import memoranda.interfaces.ProjectListener;
 import memoranda.ProjectManager;
-import memoranda.ResourcesList;
-import memoranda.TaskList;
+import memoranda.interfaces.ResourcesList;
+import memoranda.interfaces.TaskList;
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;
 import memoranda.date.DateListener;
+import memoranda.interfaces.Event;
 import memoranda.util.AgendaGenerator;
 import memoranda.util.CurrentStorage;
 import memoranda.util.Local;
@@ -262,7 +262,7 @@ public class AgendaPanel extends JPanel {
 					refresh(CurrentDate.get());
 			}});
 		EventsScheduler.addListener(new EventNotificationListener() {
-			public void eventIsOccured(memoranda.Event ev) {
+			public void eventIsOccured(Event ev) {
 				if (isActive)
 					refresh(CurrentDate.get());
 			}

@@ -12,6 +12,9 @@ import java.util.Vector;
 
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;
+import memoranda.interfaces.Note;
+import memoranda.interfaces.NoteList;
+import memoranda.interfaces.Project;
 import memoranda.util.Util;
 import nu.xom.Attribute;
 import nu.xom.Document;
@@ -69,7 +72,7 @@ public class NoteListImpl implements NoteList {
     }
     
     /**
-     * @see memoranda.NoteList#getMarkedNotes()
+     * @see NoteList#getMarkedNotes()
      */
     public Collection getMarkedNotes() {
         Vector v = new Vector();
@@ -159,7 +162,7 @@ public class NoteListImpl implements NoteList {
     }
     
      /*
-     * @see net.sf.memoranda.NoteList#removeNoteForDate(net.sf.memoranda.date.CalendarDate)
+     * @see net.sf.memoranda.interfaces.NoteList#removeNoteForDate(net.sf.memoranda.date.CalendarDate)
      */
 /*    public void removeNoteForDate(CalendarDate date) {
         Day d = getDay(date);
@@ -411,7 +414,7 @@ public class NoteListImpl implements NoteList {
 	}
 	
     /**
-     * @see memoranda.NoteList#getXMLContent()
+     * @see NoteList#getXMLContent()
      */
     public Document getXMLContent() {
         return _doc;

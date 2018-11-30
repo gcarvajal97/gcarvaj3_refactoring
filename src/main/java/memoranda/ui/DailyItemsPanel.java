@@ -24,22 +24,23 @@ import javax.swing.border.Border;
 
 import memoranda.CurrentNote;
 import memoranda.CurrentProject;
-import memoranda.EventNotificationListener;
+import memoranda.interfaces.EventNotificationListener;
 import memoranda.EventsScheduler;
 import memoranda.History;
 import memoranda.HistoryItem;
-import memoranda.HistoryListener;
-import memoranda.Note;
-import memoranda.NoteList;
-import memoranda.NoteListener;
-import memoranda.Project;
-import memoranda.ProjectListener;
-import memoranda.ResourcesList;
-import memoranda.Task;
-import memoranda.TaskList;
+import memoranda.interfaces.HistoryListener;
+import memoranda.interfaces.Note;
+import memoranda.interfaces.NoteList;
+import memoranda.interfaces.NoteListener;
+import memoranda.interfaces.Project;
+import memoranda.interfaces.ProjectListener;
+import memoranda.interfaces.ResourcesList;
+import memoranda.interfaces.Task;
+import memoranda.interfaces.TaskList;
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;
 import memoranda.date.DateListener;
+import memoranda.interfaces.Event;
 import memoranda.util.CurrentStorage;
 import memoranda.util.Local;
 import memoranda.util.Util;
@@ -280,7 +281,7 @@ public class DailyItemsPanel extends JPanel {
         });
 
         EventsScheduler.addListener(new EventNotificationListener() {
-            public void eventIsOccured(memoranda.Event ev) {
+            public void eventIsOccured(Event ev) {
                 /*DEBUG*/
                 System.out.println(ev.getTimeString() + " " + ev.getText());
                 updateIndicators();
@@ -429,10 +430,10 @@ public class DailyItemsPanel extends JPanel {
             if (EventsScheduler.isEventScheduled()) {
                 /*String evlist = "";
                 for (Iterator it = EventsScheduler.getScheduledEvents().iterator(); it.hasNext();) {
-                    net.sf.memoranda.Event ev = (net.sf.memoranda.Event)it.next();   
+                    net.sf.memoranda.interfaces.Event ev = (net.sf.memoranda.interfaces.Event)it.next();
                     evlist += ev.getTimeString()+" - "+ev.getText()+"\n";
                 } */
-                memoranda.Event ev = EventsScheduler.getFirstScheduledEvent();
+                Event ev = EventsScheduler.getFirstScheduledEvent();
                 alarmB.setToolTipText(ev.getTimeString() + " - " + ev.getText());
                 indicatorsPanel.add(alarmB, null);
             }

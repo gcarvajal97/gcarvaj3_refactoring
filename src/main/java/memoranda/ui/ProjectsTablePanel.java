@@ -13,7 +13,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import memoranda.CurrentProject;
-import memoranda.Project;
+import memoranda.interfaces.Project;
 import memoranda.ProjectManager;
 import memoranda.date.CalendarDate;
 import memoranda.util.Local;

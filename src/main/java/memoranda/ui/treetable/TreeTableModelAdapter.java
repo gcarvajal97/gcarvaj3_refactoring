@@ -13,6 +13,8 @@ package memoranda.ui.treetable;
  * you entered into with Sun.
  */
 
+import memoranda.interfaces.TreeTableModel;
+
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.table.AbstractTableModel;

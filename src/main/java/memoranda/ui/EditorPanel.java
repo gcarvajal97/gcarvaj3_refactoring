@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.net.URL;
 import java.text.DateFormat;
 
 import javax.swing.AbstractAction;
@@ -28,7 +27,7 @@ import javax.swing.text.html.HTMLDocument;
 
 import memoranda.CurrentNote;
 import memoranda.History;
-import memoranda.Note;
+import memoranda.interfaces.Note;
 import memoranda.date.CurrentDate;
 import memoranda.ui.htmleditor.HTMLEditor;
 import memoranda.util.Configuration;

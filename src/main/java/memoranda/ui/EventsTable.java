@@ -17,7 +17,7 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 
-import memoranda.Event;
+import memoranda.interfaces.Event;
 import memoranda.EventsManager;
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;

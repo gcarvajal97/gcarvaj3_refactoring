@@ -11,6 +11,7 @@ package memoranda;
 import java.util.Vector;
 
 import memoranda.date.CalendarDate;
+import memoranda.interfaces.Project;
 import memoranda.util.CurrentStorage;
 import memoranda.util.Local;
 import memoranda.util.Util;

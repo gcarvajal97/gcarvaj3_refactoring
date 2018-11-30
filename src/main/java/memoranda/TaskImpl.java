@@ -16,6 +16,9 @@ import memoranda.date.CurrentDate;
 
 import java.util.Calendar;
 
+import memoranda.interfaces.Project;
+import memoranda.interfaces.Task;
+import memoranda.interfaces.TaskList;
 import nu.xom.Attribute;
 import nu.xom.Element;
 import nu.xom.Elements;
@@ -83,7 +86,7 @@ public class TaskImpl implements Task, Comparable {
     }
 	
 	/* 
-	 * @see net.sf.memoranda.Task#getParentTask()
+	 * @see net.sf.memoranda.interfaces.Task#getParentTask()
 	 */
 	public Task getParentTask() {
 		Node parentNode = _element.getParent();
@@ -126,7 +129,7 @@ public class TaskImpl implements Task, Comparable {
     }
 
     /**s
-     * @see memoranda.Task#getStatus()
+     * @see Task#getStatus()
      */
     public int getStatus(CalendarDate date) {
         CalendarDate start = getStartDate();
@@ -177,14 +180,14 @@ public class TaskImpl implements Task, Comparable {
     }
 
     /**
-     * @see memoranda.Task#getID()
+     * @see Task#getID()
      */
     public String getID() {
         return _element.getAttribute("id").getValue();
     }
 
     /**
-     * @see memoranda.Task#getText()
+     * @see Task#getText()
      */
     public String getText() {
         return _element.getFirstChildElement("text").getValue();
@@ -195,7 +198,7 @@ public class TaskImpl implements Task, Comparable {
     }
     
     /**
-     * @see memoranda.Task#setText()
+     * @see Task#setText()
      */
     public void setText(String s) {
         _element.getFirstChildElement("text").removeChildren();
@@ -203,14 +206,14 @@ public class TaskImpl implements Task, Comparable {
     }
 
     /**
-     * @see memoranda.Task#freeze()
+     * @see Task#freeze()
      */
     public void freeze() {
         setAttr("frozen", "yes");
     }
 
     /**
-     * @see memoranda.Task#unfreeze()
+     * @see Task#unfreeze()
      */
     public void unfreeze() {
         if (this.isFrozen())
@@ -218,7 +221,7 @@ public class TaskImpl implements Task, Comparable {
     }
 
     /**
-     * @see memoranda.Task#getDependsFrom()
+     * @see Task#getDependsFrom()
      */
     public Collection getDependsFrom() {
         Vector v = new Vector();
@@ -232,7 +235,7 @@ public class TaskImpl implements Task, Comparable {
         return v;
     }
     /**
-     * @see memoranda.Task#addDependsFrom(memoranda.Task)
+     * @see Task#addDependsFrom(Task)
      */
     public void addDependsFrom(Task task) {
         Element dep = new Element("dependsFrom");
@@ -240,7 +243,7 @@ public class TaskImpl implements Task, Comparable {
         _element.appendChild(dep);
     }
     /**
-     * @see memoranda.Task#removeDependsFrom(memoranda.Task)
+     * @see Task#removeDependsFrom(Task)
      */
     public void removeDependsFrom(Task task) {
         Elements deps = _element.getChildElements("dependsFrom");
@@ -253,20 +256,20 @@ public class TaskImpl implements Task, Comparable {
         }
     }
     /**
-     * @see memoranda.Task#getProgress()
+     * @see Task#getProgress()
      */
     public int getProgress() {
         return new Integer(_element.getAttribute("progress").getValue()).intValue();
     }
     /**
-     * @see memoranda.Task#setProgress(int)
+     * @see Task#setProgress(int)
      */
     public void setProgress(int p) {
         if ((p >= 0) && (p <= 100))
             setAttr("progress", new Integer(p).toString());
     }
     /**
-     * @see memoranda.Task#getPriority()
+     * @see Task#getPriority()
      */
     public int getPriority() {
         Attribute pa = _element.getAttribute("priority");
@@ -275,7 +278,7 @@ public class TaskImpl implements Task, Comparable {
         return new Integer(pa.getValue()).intValue();
     }
     /**
-     * @see memoranda.Task#setPriority(int)
+     * @see Task#setPriority(int)
      */
     public void setPriority(int p) {
         setAttr("priority", String.valueOf(p));
@@ -309,7 +312,7 @@ public class TaskImpl implements Task, Comparable {
 	}
 
     /**
-     * @see memoranda.Task#getRate()
+     * @see Task#getRate()
      */
 	 
      public long getRate() {
@@ -344,7 +347,7 @@ public class TaskImpl implements Task, Comparable {
 	 }
 
 	/* 
-	 * @see net.sf.memoranda.Task#getSubTasks()
+	 * @see net.sf.memoranda.interfaces.Task#getSubTasks()
 	 */
 	public Collection getSubTasks() {
 		Elements subTasks = _element.getChildElements("task");
@@ -361,7 +364,7 @@ public class TaskImpl implements Task, Comparable {
     }
 	
 	/* 
-	 * @see net.sf.memoranda.Task#getSubTask(java.lang.String)
+	 * @see net.sf.memoranda.interfaces.Task#getSubTask(java.lang.String)
 	 */
 	public Task getSubTask(String id) {
 		Elements subTasks = _element.getChildElements("task");
@@ -373,7 +376,7 @@ public class TaskImpl implements Task, Comparable {
 	}
 
 	/* 
-	 * @see net.sf.memoranda.Task#hasSubTasks()
+	 * @see net.sf.memoranda.interfaces.Task#hasSubTasks()
 	 */
 	public boolean hasSubTasks(String id) {
 		Elements subTasks = _element.getChildElements("task");

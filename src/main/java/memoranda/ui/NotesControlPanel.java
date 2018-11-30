@@ -25,7 +25,7 @@ import javax.swing.event.ListSelectionListener;
 
 import memoranda.CurrentNote;
 import memoranda.CurrentProject;
-import memoranda.Note;
+import memoranda.interfaces.Note;
 import memoranda.date.CurrentDate;
 import memoranda.util.Configuration;
 import memoranda.util.CurrentStorage;

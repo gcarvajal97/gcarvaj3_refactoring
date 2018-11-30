@@ -8,7 +8,7 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Vector;
 
-import memoranda.Project;
+import memoranda.interfaces.Project;
 import memoranda.ProjectManager;
 import nu.xom.Attribute;
 import nu.xom.DocType;

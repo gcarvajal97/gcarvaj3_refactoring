@@ -8,7 +8,6 @@
  */
 package memoranda.util;
 import java.io.BufferedReader;
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,7 +20,7 @@ import java.util.zip.ZipOutputStream;
 
 import javax.swing.JOptionPane;
 
-import memoranda.Project;
+import memoranda.interfaces.Project;
 import memoranda.ProjectManager;
 import memoranda.date.CalendarDate;
 import memoranda.ui.App;

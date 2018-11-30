@@ -28,7 +28,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import memoranda.Project;
+import memoranda.interfaces.Project;
 import memoranda.ProjectManager;
 import memoranda.date.CalendarDate;
 import memoranda.util.CurrentStorage;

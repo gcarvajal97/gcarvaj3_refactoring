@@ -26,12 +26,12 @@ import javax.swing.event.ListSelectionListener;
 
 import memoranda.CurrentProject;
 import memoranda.History;
-import memoranda.NoteList;
-import memoranda.Project;
-import memoranda.ProjectListener;
-import memoranda.ResourcesList;
-import memoranda.Task;
-import memoranda.TaskList;
+import memoranda.interfaces.NoteList;
+import memoranda.interfaces.Project;
+import memoranda.interfaces.ProjectListener;
+import memoranda.interfaces.ResourcesList;
+import memoranda.interfaces.Task;
+import memoranda.interfaces.TaskList;
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;
 import memoranda.date.DateListener;

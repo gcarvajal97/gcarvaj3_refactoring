@@ -8,11 +8,11 @@
  */
 package memoranda.util;
 
-import memoranda.Note;
-import memoranda.NoteList;
-import memoranda.Project;
-import memoranda.ResourcesList;
-import memoranda.TaskList;
+import memoranda.interfaces.Note;
+import memoranda.interfaces.NoteList;
+import memoranda.interfaces.Project;
+import memoranda.interfaces.ResourcesList;
+import memoranda.interfaces.TaskList;
 /**
  * 
  */

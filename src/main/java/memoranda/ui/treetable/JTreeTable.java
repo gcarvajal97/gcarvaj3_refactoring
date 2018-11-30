@@ -18,15 +18,14 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
 
-import memoranda.Task;
+import memoranda.interfaces.Task;
+import memoranda.interfaces.TreeTableModel;
 
 import javax.swing.table.*;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 import java.awt.event.MouseEvent;
 

@@ -14,12 +14,12 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import memoranda.CurrentProject;
-import memoranda.NoteList;
-import memoranda.Project;
-import memoranda.ProjectListener;
+import memoranda.interfaces.NoteList;
+import memoranda.interfaces.Project;
+import memoranda.interfaces.ProjectListener;
 import memoranda.Resource;
-import memoranda.ResourcesList;
-import memoranda.TaskList;
+import memoranda.interfaces.ResourcesList;
+import memoranda.interfaces.TaskList;
 import memoranda.ui.table.TableSorter;
 import memoranda.util.Local;
 import memoranda.util.MimeType;

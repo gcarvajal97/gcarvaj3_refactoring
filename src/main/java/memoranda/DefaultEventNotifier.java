@@ -7,6 +7,8 @@
  */
 package memoranda;
 
+import memoranda.interfaces.Event;
+import memoranda.interfaces.EventNotificationListener;
 import memoranda.ui.EventNotificationDialog;
 
 /**
@@ -23,7 +25,7 @@ public class DefaultEventNotifier implements EventNotificationListener {
 	}
 
 	/**
-	 * @see memoranda.EventNotificationListener#eventIsOccured(memoranda.Event)
+	 * @see EventNotificationListener#eventIsOccured(Event)
 	 */
 	public void eventIsOccured(Event ev) {		
 		new EventNotificationDialog(
@@ -32,7 +34,7 @@ public class DefaultEventNotifier implements EventNotificationListener {
 			ev.getText());
 	}
 	/**
-	 * @see memoranda.EventNotificationListener#eventsChanged()
+	 * @see EventNotificationListener#eventsChanged()
 	 */
 	public void eventsChanged() {
 		//

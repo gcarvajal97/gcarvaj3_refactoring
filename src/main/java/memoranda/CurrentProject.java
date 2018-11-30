@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.Collection;
 import java.util.Vector;
 
+import memoranda.interfaces.*;
 import memoranda.ui.AppFrame;
 import memoranda.util.Context;
 import memoranda.util.CurrentStorage;
