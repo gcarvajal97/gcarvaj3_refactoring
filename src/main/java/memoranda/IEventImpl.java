@@ -1,5 +1,5 @@
 /**
- * EventImpl.java
+ * IEventImpl.java
  * Created on 08.03.2003, 13:20:13 Alex
  * Package: net.sf.memoranda
  * 
@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import memoranda.date.CalendarDate;
-import memoranda.interfaces.Event;
+import memoranda.interfaces.IEvent;
 import memoranda.util.Local;
 import nu.xom.Attribute;
 import nu.xom.Element;
@@ -21,28 +21,28 @@ import nu.xom.Element;
 /**
  * 
  */
-/*$Id: EventImpl.java,v 1.9 2004/10/06 16:00:11 ivanrise Exp $*/
-public class EventImpl implements Event, Comparable {
+/*$Id: IEventImpl.java,v 1.9 2004/10/06 16:00:11 ivanrise Exp $*/
+public class IEventImpl implements IEvent, Comparable {
     
     private Element _element = null;
 
     /**
-     * Constructor for EventImpl.
+     * Constructor for IEventImpl.
      */
-    public EventImpl(Element elem) {
+    public IEventImpl(Element elem) {
         _element = elem;
     }
 
    
     /**
-     * @see Event#getHour()
+     * @see IEvent#getHour()
      */
     public int getHour() {
         return new Integer(_element.getAttribute("hour").getValue()).intValue();
     }
 
     /**
-     * @see Event#getMinute()
+     * @see IEvent#getMinute()
      */
     public int getMinute() {
         return new Integer(_element.getAttribute("min").getValue()).intValue();
@@ -54,26 +54,26 @@ public class EventImpl implements Event, Comparable {
         
   
     /**
-     * @see Event#getText()
+     * @see IEvent#getText()
      */
     public String getText() {
         return _element.getValue();
     }
 
     /**
-     * @see Event#getContent()
+     * @see IEvent#getContent()
      */
     public Element getContent() {
         return _element;
     }
     /**
-     * @see Event#isRepeatable()
+     * @see IEvent#isRepeatable()
      */
     public boolean isRepeatable() {
         return getStartDate() != null;
     }
     /**
-     * @see Event#getStartDate()
+     * @see IEvent#getStartDate()
      */
     public CalendarDate getStartDate() {
         Attribute a = _element.getAttribute("startDate");
@@ -81,7 +81,7 @@ public class EventImpl implements Event, Comparable {
         return null;
     }
     /**
-     * @see Event#getEndDate()
+     * @see IEvent#getEndDate()
      */
     public CalendarDate getEndDate() {
         Attribute a = _element.getAttribute("endDate");
@@ -89,7 +89,7 @@ public class EventImpl implements Event, Comparable {
         return null;
     }
     /**
-     * @see Event#getPeriod()
+     * @see IEvent#getPeriod()
      */
     public int getPeriod() {
         Attribute a = _element.getAttribute("period");
@@ -97,7 +97,7 @@ public class EventImpl implements Event, Comparable {
         return 0;
     }
     /**
-     * @see Event#getId()
+     * @see IEvent#getId()
      */
     public String getId() {
         Attribute a = _element.getAttribute("id");
@@ -105,7 +105,7 @@ public class EventImpl implements Event, Comparable {
         return null;
     }
     /**
-     * @see Event#getRepeat()
+     * @see IEvent#getRepeat()
      */
     public int getRepeat() {
         Attribute a = _element.getAttribute("repeat-type");
@@ -113,7 +113,7 @@ public class EventImpl implements Event, Comparable {
         return 0;
     }
     /**
-     * @see Event#getTime()
+     * @see IEvent#getTime()
      */
     public Date getTime() {
     	//Deprecated methods
@@ -134,7 +134,7 @@ public class EventImpl implements Event, Comparable {
     }
 	
 	/**
-     * @see Event#getWorkinDays()
+     * @see IEvent#getWorkinDays()
      */
 	public boolean getWorkingDays() {
         Attribute a = _element.getAttribute("workingDays");
@@ -143,7 +143,7 @@ public class EventImpl implements Event, Comparable {
 	}
 	
 	public int compareTo(Object o) {
-		Event event = (Event) o;
+		IEvent event = (IEvent) o;
 		return (getHour() * 60 + getMinute()) - (event.getHour() * 60 + event.getMinute());
 	}
 

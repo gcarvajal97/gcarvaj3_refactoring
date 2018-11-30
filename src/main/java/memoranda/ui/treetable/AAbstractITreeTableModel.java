@@ -1,6 +1,6 @@
 package memoranda.ui.treetable;
 /*
- * @(#)AbstractTreeTableModel.java	1.2 98/10/27
+ * @(#)AAbstractITreeTableModel.java	1.2 98/10/27
  *
  * Copyright 1997, 1998 by Sun Microsystems, Inc.,
  * 901 San Antonio Road, Palo Alto, California, 94303, U.S.A.
@@ -13,23 +13,23 @@ package memoranda.ui.treetable;
  * you entered into with Sun.
  */
 
-import memoranda.interfaces.TreeTableModel;
+import memoranda.interfaces.ITreeTableModel;
 
 import javax.swing.tree.*;
 import javax.swing.event.*;
  
 /**
  * @version 1.2 10/27/98
- * An abstract implementation of the TreeTableModel interface, handling the list 
+ * An abstract implementation of the ITreeTableModel interface, handling the list
  * of listeners. 
  * @author Philip Milne
  */
 
-public abstract class AbstractTreeTableModel implements TreeTableModel {
+public abstract class AAbstractITreeTableModel implements ITreeTableModel {
     protected Object root;     
     protected EventListenerList listenerList = new EventListenerList();
   
-    public AbstractTreeTableModel(Object root) {
+    public AAbstractITreeTableModel(Object root) {
         this.root = root; 
     }
 
@@ -170,7 +170,7 @@ public abstract class AbstractTreeTableModel implements TreeTableModel {
     }
 
     //
-    // Default impelmentations for methods in the TreeTableModel interface. 
+    // Default impelmentations for methods in the ITreeTableModel interface.
     //
 
     public Class getColumnClass(int column) { return Object.class; }
@@ -180,7 +180,7 @@ public abstract class AbstractTreeTableModel implements TreeTableModel {
     *  and keyboard events in the Tree column to the underlying JTree. 
     */ 
     public boolean isCellEditable(Object node, int column) { 
-         return getColumnClass(column) == TreeTableModel.class; 
+         return getColumnClass(column) == ITreeTableModel.class;
     }
 
     public void setValueAt(Object aValue, Object node, int column) {}

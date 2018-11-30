@@ -1,12 +1,12 @@
 /**
- * TaskTableModel.java         
+ * TaskTableModelIA.java
  * -----------------------------------------------------------------------------
- * Project           Memoranda
+ * IProject           Memoranda
  * Package           net.sf.memoranda.ui
  * Original author   Alex V. Alishevskikh
  *                   [alexeya@gmail.com]
  * Created           18.05.2005 15:16:11
- * Revision info     $RCSfile: TaskTableModel.java,v $ $Revision: 1.7 $ $State: Exp $  
+ * Revision info     $RCSfile: TaskTableModelIA.java,v $ $Revision: 1.7 $ $State: Exp $
  *
  * Last modified on  $Date: 2005/12/01 08:12:26 $
  *               by  $Author: alexeya $
@@ -24,21 +24,21 @@ import javax.swing.event.*;
 
 import memoranda.*;
 import memoranda.date.CurrentDate;
-import memoranda.interfaces.Project;
-import memoranda.interfaces.Task;
-import memoranda.ui.treetable.AbstractTreeTableModel;
-import memoranda.interfaces.TreeTableModel;
+import memoranda.interfaces.IProject;
+import memoranda.interfaces.ITask;
+import memoranda.interfaces.ITreeTableModel;
+import memoranda.ui.treetable.AAbstractITreeTableModel;
 import memoranda.util.Context;
 import memoranda.util.Local;
 
 /**
  * JAVADOC:
- * <h1>TaskTableModel</h1>
+ * <h1>TaskTableModelIA</h1>
  * 
- * @version $Id: TaskTableModel.java,v 1.7 2005/12/01 08:12:26 alexeya Exp $
+ * @version $Id: TaskTableModelIA.java,v 1.7 2005/12/01 08:12:26 alexeya Exp $
  * @author $Author: alexeya $
  */
-public class TaskTableModel extends AbstractTreeTableModel implements TreeTableModel {
+public class TaskTableModelIA extends AAbstractITreeTableModel implements ITreeTableModel {
 
     String[] columnNames = {"", Local.getString("To-do"),
             Local.getString("Start date"), Local.getString("End date"),
@@ -50,36 +50,36 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
     private boolean activeOnly = check_activeOnly();
         
     /**
-     * JAVADOC: Constructor of <code>TaskTableModel</code>
+     * JAVADOC: Constructor of <code>TaskTableModelIA</code>
      * 
      * @param root
      */
-    public TaskTableModel(){
+    public TaskTableModelIA(){
         super(CurrentProject.get());
     }
 
     /**
-     * @see TreeTableModel#getColumnCount()
+     * @see ITreeTableModel#getColumnCount()
      */
     public int getColumnCount() {
         return columnNames.length;
     }
 
     /**
-     * @see TreeTableModel#getColumnName(int)
+     * @see ITreeTableModel#getColumnName(int)
      */
     public String getColumnName(int column) {
         return columnNames[column];
     }
 
     /**
-     * @see TreeTableModel#getValueAt(java.lang.Object,
+     * @see ITreeTableModel#getValueAt(java.lang.Object,
      *      int)
      */
     public Object getValueAt(Object node, int column) {
-        if (node instanceof Project)
+        if (node instanceof IProject)
             return null;
-        Task t = (Task) node;
+        ITask t = (ITask) node;
         switch (column) {
         case 0:
             return "";
@@ -109,19 +109,19 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
 
     String getStatusString(int status) {
         switch (status) {
-        case Task.ACTIVE:
+        case ITask.ACTIVE:
             return Local.getString("Active");
-        case Task.DEADLINE:
+        case ITask.DEADLINE:
             return Local.getString("Deadline");
-        case Task.COMPLETED:
+        case ITask.COMPLETED:
             return Local.getString("Completed");
-        case Task.FAILED:
+        case ITask.FAILED:
             return Local.getString("Failed");
-        case Task.FROZEN:
+        case ITask.FROZEN:
             return Local.getString("Frozen");
-        case Task.LOCKED:
+        case ITask.LOCKED:
             return Local.getString("Locked");
-        case Task.SCHEDULED:
+        case ITask.SCHEDULED:
             return Local.getString("Scheduled");
         }
         return "";
@@ -129,15 +129,15 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
 
     String getPriorityString(int p) {
         switch (p) {
-        case Task.PRIORITY_NORMAL:
+        case ITask.PRIORITY_NORMAL:
             return Local.getString("Normal");
-        case Task.PRIORITY_LOW:
+        case ITask.PRIORITY_LOW:
             return Local.getString("Low");
-        case Task.PRIORITY_LOWEST:
+        case ITask.PRIORITY_LOWEST:
             return Local.getString("Lowest");
-        case Task.PRIORITY_HIGH:
+        case ITask.PRIORITY_HIGH:
             return Local.getString("High");
-        case Task.PRIORITY_HIGHEST:
+        case ITask.PRIORITY_HIGHEST:
             return Local.getString("Highest");
         }
         return "";
@@ -147,13 +147,13 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
      * @see javax.swing.tree.TreeModel#getChildCount(java.lang.Object)
      */
     public int getChildCount(Object parent) {
-        if (parent instanceof Project) {
+        if (parent instanceof IProject) {
 		if( activeOnly() ){
 			return CurrentProject.getTaskList().getActiveSubTasks(null, CurrentDate.get()).size();
 		}
 		else return CurrentProject.getTaskList().getTopLevelTasks().size();
         }
-        Task t = (Task) parent;
+        ITask t = (ITask) parent;
         if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getID(), CurrentDate.get()).size();
 	else return t.getSubTasks().size();
     }
@@ -162,22 +162,22 @@ public class TaskTableModel extends AbstractTreeTableModel implements TreeTableM
      * @see javax.swing.tree.TreeModel#getChild(java.lang.Object, int)
      */
     public Object getChild(Object parent, int index) {
-        if (parent instanceof Project)
+        if (parent instanceof IProject)
             if( activeOnly() ) return CurrentProject.getTaskList().getActiveSubTasks(null, CurrentDate.get()).toArray()[index];
 	    else return CurrentProject.getTaskList().getTopLevelTasks().toArray()[index];
-        Task t = (Task) parent;
+        ITask t = (ITask) parent;
         if(activeOnly()) return CurrentProject.getTaskList().getActiveSubTasks(t.getID(), CurrentDate.get()).toArray()[index];
 	else return t.getSubTasks().toArray()[index];
     }
 
     /**
-     * @see TreeTableModel#getColumnClass(int)
+     * @see ITreeTableModel#getColumnClass(int)
      */
     public Class getColumnClass(int column) {
         try {
             switch (column) {
             case 1:
-                return TreeTableModel.class;
+                return ITreeTableModel.class;
             case 0:
                 return TaskTable.class;
             case 4:

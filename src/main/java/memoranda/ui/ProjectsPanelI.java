@@ -38,11 +38,11 @@ import memoranda.interfaces.*;
 import memoranda.ProjectManager;
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;
-import memoranda.date.DateListener;
+import memoranda.interfaces.IDateListener;
 import memoranda.util.*;
 
-/*$Id: ProjectsPanel.java,v 1.14 2005/01/04 09:59:22 pbielen Exp $*/
-public class ProjectsPanel extends JPanel implements ExpandablePanel {
+/*$Id: ProjectsPanelI.java,v 1.14 2005/01/04 09:59:22 pbielen Exp $*/
+public class ProjectsPanelI extends JPanel implements IExpandablePanel {
 	BorderLayout borderLayout1 = new BorderLayout();
 	JToolBar topBar = new JToolBar();
 	JPanel toolbarPanel = new JPanel();
@@ -84,7 +84,7 @@ public class ProjectsPanel extends JPanel implements ExpandablePanel {
 	};
 
 	
-	public ProjectsPanel() {
+	public ProjectsPanelI() {
 		try {
 			jbInit();
 		} catch (Exception ex) {
@@ -148,7 +148,7 @@ public class ProjectsPanel extends JPanel implements ExpandablePanel {
 		ppNewProject.setAction(newProjectAction);
 
 		ppProperties.setFont(new java.awt.Font("Dialog", 1, 11));
-		ppProperties.setText(Local.getString("Project properties"));
+		ppProperties.setText(Local.getString("IProject properties"));
 		ppProperties.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ppProperties_actionPerformed(e);
@@ -231,19 +231,19 @@ public class ProjectsPanel extends JPanel implements ExpandablePanel {
 		projectsPPMenu.add(ppProperties);
 		projectsPPMenu.addSeparator();
 		projectsPPMenu.add(ppShowActiveOnlyChB);
-		CurrentProject.addProjectListener(new ProjectListener() {
+		CurrentProject.addProjectListener(new IProjectListener() {
 			public void projectChange(
-				Project p,
-				NoteList nl,
-				TaskList tl,
-				ResourcesList rl) {
+				IProject p,
+				INoteList nl,
+				ITaskList tl,
+				IResourcesList rl) {
 			}
 			public void projectWasChanged() {
 				curProjectTitle.setText(CurrentProject.get().getTitle());
 				prjTablePanel.updateUI();
 			}
 		});
-		CurrentDate.addDateListener(new DateListener() {
+		CurrentDate.addDateListener(new IDateListener() {
 			public void dateChange(CalendarDate d) {
 				prjTablePanel.updateUI();
 			}
@@ -344,7 +344,7 @@ public class ProjectsPanel extends JPanel implements ExpandablePanel {
 
 	void ppDeleteProject_actionPerformed(ActionEvent e) {
 		String msg;
-		Project prj;
+		IProject prj;
 		Vector toremove = new Vector();
 		if (prjTablePanel.projectsTable.getSelectedRows().length > 1)
 			msg =
@@ -378,7 +378,7 @@ public class ProjectsPanel extends JPanel implements ExpandablePanel {
 			i < prjTablePanel.projectsTable.getSelectedRows().length;
 			i++) {
 			prj =
-				(Project) prjTablePanel
+				(IProject) prjTablePanel
 					.projectsTable
 					.getModel()
 					.getValueAt(
@@ -396,9 +396,9 @@ public class ProjectsPanel extends JPanel implements ExpandablePanel {
 	}
 
 	void ppProperties_actionPerformed(ActionEvent e) {
-		Project prj = prjTablePanel.getSelectedProject();
+		IProject prj = prjTablePanel.getSelectedProject();
 		ProjectDialog dlg =
-			new ProjectDialog(null, Local.getString("Project properties"));
+			new ProjectDialog(null, Local.getString("IProject properties"));
 		Dimension dlgSize = dlg.getSize();
 		Dimension frmSize = App.getFrame().getSize();
 		Point loc = App.getFrame().getLocation();
@@ -417,7 +417,7 @@ public class ProjectsPanel extends JPanel implements ExpandablePanel {
 			dlg.endDate.getModel().setValue(
 				prj.getEndDate().getCalendar().getTime());
 		}
-		/*if (prj.getStatus() == Project.FROZEN)
+		/*if (prj.getStatus() == IProject.FROZEN)
 			dlg.freezeChB.setSelected(true);*/
 		dlg.setVisible(true);
 		if (dlg.CANCELLED)

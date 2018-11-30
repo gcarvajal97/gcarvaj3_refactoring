@@ -1,6 +1,6 @@
 package memoranda.interfaces;
 /*
- * TreeTableModel.java
+ * ITreeTableModel.java
  *
  * Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
  *
@@ -22,17 +22,17 @@ package memoranda.interfaces;
 import javax.swing.tree.TreeModel;
 
 /**
- * TreeTableModel is the model used by a JTreeTable. It extends TreeModel
+ * ITreeTableModel is the model used by a JTreeTable. It extends TreeModel
  * to add methods for getting inforamtion about the set of columns each 
- * node in the TreeTableModel may have. Each column, like a column in 
+ * node in the ITreeTableModel may have. Each column, like a column in
  * a TableModel, has a name and a type associated with it. Each node in 
- * the TreeTableModel can return a value for each of the columns and 
+ * the ITreeTableModel can return a value for each of the columns and
  * set that value if isCellEditable() returns true. 
  *
  * @author Philip Milne 
  * @author Scott Violet
  */
-public interface TreeTableModel extends TreeModel
+public interface ITreeTableModel extends TreeModel
 {
     /**
      * Returns the number ofs availible column.

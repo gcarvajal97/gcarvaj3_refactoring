@@ -7,6 +7,8 @@
  * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
  */
 package memoranda.util;
+import memoranda.interfaces.IStorage;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
@@ -21,16 +23,16 @@ public class CurrentStorage {
     /**
      * @todo: implement storage congiguration
      */
-    private static Storage _storage = new FileStorage();
+    private static IStorage _I_storage = new FileStorage();
     
     private static Vector actionListeners = new Vector();
     
-    public static Storage get() {
-        return _storage;
+    public static IStorage get() {
+        return _I_storage;
     }
     
-    public static void set(Storage storage) {
-        _storage = storage;
+    public static void set(IStorage IStorage) {
+        _I_storage = IStorage;
         storageChanged();
     }
     

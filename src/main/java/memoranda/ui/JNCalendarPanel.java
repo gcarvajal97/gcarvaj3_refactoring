@@ -26,11 +26,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import memoranda.CurrentProject;
-import memoranda.interfaces.NoteList;
-import memoranda.interfaces.Project;
-import memoranda.interfaces.ProjectListener;
-import memoranda.interfaces.ResourcesList;
-import memoranda.interfaces.TaskList;
+import memoranda.interfaces.*;
+import memoranda.interfaces.IProject;
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;
 import memoranda.util.Local;
@@ -212,8 +209,8 @@ public class JNCalendarPanel extends JPanel {
         yearSpin_actionPerformed();
       }
     });
-    CurrentProject.addProjectListener(new ProjectListener() {
-            public void projectChange(Project p, NoteList nl, TaskList tl, ResourcesList rl) {}
+    CurrentProject.addProjectListener(new IProjectListener() {
+            public void projectChange(IProject p, INoteList nl, ITaskList tl, IResourcesList rl) {}
             public void projectWasChanged() {
                 jnCalendar.updateUI();
             }

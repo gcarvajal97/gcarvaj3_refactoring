@@ -9,8 +9,8 @@
 package memoranda;
 
 import memoranda.date.CalendarDate;
-import memoranda.interfaces.Note;
-import memoranda.interfaces.Project;
+import memoranda.interfaces.INote;
+import memoranda.interfaces.IProject;
 
 /**
  * 
@@ -19,30 +19,30 @@ import memoranda.interfaces.Project;
 public class HistoryItem {
     
     private CalendarDate _date;
-    private Project _project;
+    private IProject _I_project;
     /**
      * Constructor for HistoryItem.
      */
-    public HistoryItem(CalendarDate date, Project project) {
+    public HistoryItem(CalendarDate date, IProject IProject) {
         _date = date;
-        _project = project;
+        _I_project = IProject;
     }
     
-    public HistoryItem(Note note) {
-        _date = note.getDate();
-        _project = note.getProject();
+    public HistoryItem(INote INote) {
+        _date = INote.getDate();
+        _I_project = INote.getProject();
     }
     
     public CalendarDate getDate() {
        return _date;
     }
     
-    public Project getProject() {
-       return _project;
+    public IProject getProject() {
+       return _I_project;
     }
     
     public boolean equals(HistoryItem i) {
-       return i.getDate().equals(_date) && i.getProject().getID().equals(_project.getID());
+       return i.getDate().equals(_date) && i.getProject().getID().equals(_I_project.getID());
     } 
 
 }

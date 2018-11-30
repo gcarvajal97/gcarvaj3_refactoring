@@ -1,5 +1,5 @@
 /**
- * ResourcesListImpl.java
+ * IResourcesListImpl.java
  * Created on 24.03.2003, 18:30:31 Alex
  * Package: net.sf.memoranda
  *
@@ -10,8 +10,8 @@ package memoranda;
 
 import java.util.Vector;
 
-import memoranda.interfaces.Project;
-import memoranda.interfaces.ResourcesList;
+import memoranda.interfaces.IProject;
+import memoranda.interfaces.IResourcesList;
 import memoranda.util.Util;
 
 import java.io.File;
@@ -24,26 +24,26 @@ import nu.xom.Elements;
 /**
  *
  */
-/*$Id: ResourcesListImpl.java,v 1.5 2007/03/20 06:21:46 alexeya Exp $*/
-public class ResourcesListImpl implements ResourcesList {
+/*$Id: IResourcesListImpl.java,v 1.5 2007/03/20 06:21:46 alexeya Exp $*/
+public class IResourcesListImpl implements IResourcesList {
     
-	private Project _project = null;
+	private IProject _I_project = null;
     private Document _doc = null;
     private Element _root = null;
 
     /**
-     * Constructor for TaskListImpl.
+     * Constructor for ITaskListImpl.
      */
-    public ResourcesListImpl(Document doc, Project prj) {
+    public IResourcesListImpl(Document doc, IProject prj) {
         _doc = doc;
         _root = _doc.getRootElement();
-        _project = prj;
+        _I_project = prj;
     }
 
-    public ResourcesListImpl(Project prj) {
+    public IResourcesListImpl(IProject prj) {
             _root = new Element("resources-list");
             _doc = new Document(_root);
-            _project = prj;
+            _I_project = prj;
     }
 
     public Vector getAllResources() {
@@ -55,7 +55,7 @@ public class ResourcesListImpl implements ResourcesList {
     }
 
     /**
-     * @see ResourcesList#getResource(java.lang.String)
+     * @see IResourcesList#getResource(java.lang.String)
      */
     public Resource getResource(String path) {
         Elements rs = _root.getChildElements("resource");
@@ -77,7 +77,7 @@ public class ResourcesListImpl implements ResourcesList {
     }*/
     
     /**
-     * @see ResourcesList#addResource(java.lang.String, boolean)
+     * @see IResourcesList#addResource(java.lang.String, boolean)
      */
     public void addResource(String path, boolean isInternetShortcut, boolean isProjectFile) {
         Element el = new Element("resource");
@@ -95,7 +95,7 @@ public class ResourcesListImpl implements ResourcesList {
     }
 
     /**
-     * @see ResourcesList#removeResource(java.lang.String)
+     * @see IResourcesList#removeResource(java.lang.String)
      */
     public void removeResource(String path) {
         Elements rs = _root.getChildElements("resource");
@@ -112,13 +112,13 @@ public class ResourcesListImpl implements ResourcesList {
         
 
     /**
-     * @see ResourcesList#getAllResourcesCount()
+     * @see IResourcesList#getAllResourcesCount()
      */
     public int getAllResourcesCount() {
         return _root.getChildElements("resource").size();
     }
     /**
-     * @see ResourcesList#getXMLContent()
+     * @see IResourcesList#getXMLContent()
      */
     public Document getXMLContent() {
         return _doc;

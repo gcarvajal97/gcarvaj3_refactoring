@@ -17,11 +17,11 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 
-import memoranda.interfaces.Event;
+import memoranda.interfaces.IEvent;
 import memoranda.EventsManager;
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;
-import memoranda.date.DateListener;
+import memoranda.interfaces.IDateListener;
 import memoranda.util.Local;
 /**
  *
@@ -41,7 +41,7 @@ public class EventsTable extends JTable {
         setModel(new EventsTableModel());
         initTable(CurrentDate.get());
         this.setShowGrid(false);
-        CurrentDate.addDateListener(new DateListener() {
+        CurrentDate.addDateListener(new IDateListener() {
             public void dateChange(CalendarDate d) {
                 //updateUI();
                 initTable(d);
@@ -73,7 +73,7 @@ public class EventsTable extends JTable {
                 int column) {
                 Component comp;
                 comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                Event ev = (Event)getModel().getValueAt(row, EVENT);
+                IEvent ev = (IEvent)getModel().getValueAt(row, EVENT);
                 comp.setForeground(java.awt.Color.gray);
                 if (ev.isRepeatable())
                     comp.setFont(comp.getFont().deriveFont(Font.ITALIC));
@@ -96,7 +96,7 @@ public class EventsTable extends JTable {
     class EventsTableModel extends AbstractTableModel {
 
         String[] columnNames = {
-            //Local.getString("Task name"),
+            //Local.getString("ITask name"),
             Local.getString("Time"),
                 Local.getString("Text")
         };
@@ -121,7 +121,7 @@ public class EventsTable extends JTable {
         }
 
         public Object getValueAt(int row, int col) {
-           Event ev = (Event)events.get(row);
+           IEvent ev = (IEvent)events.get(row);
            if (col == 0)
                 //return ev.getHour()+":"+ev.getMinute();
                 return ev.getTimeString();

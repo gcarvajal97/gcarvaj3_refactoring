@@ -1,5 +1,5 @@
 /**
- * NoteList.java
+ * INoteList.java
  * Created on 21.02.2003, 15:40:46 Alex
  * Package: net.sf.memoranda
  * 
@@ -10,13 +10,12 @@ package memoranda.interfaces;
 import java.util.Collection;
 
 import memoranda.date.CalendarDate;
-import memoranda.interfaces.Note;
 
 /**
  * 
  */
-/*$Id: NoteList.java,v 1.5 2004/10/07 21:33:36 ivanrise Exp $*/
-public interface NoteList {
+/*$Id: INoteList.java,v 1.5 2004/10/07 21:33:36 ivanrise Exp $*/
+public interface INoteList {
     
     Collection getAllNotes();
     
@@ -24,14 +23,14 @@ public interface NoteList {
 
     Collection getNotesForPeriod(CalendarDate startDate, CalendarDate endDate);
 
-    Note getNoteForDate(CalendarDate date);
+    INote getNoteForDate(CalendarDate date);
     
-    Note createNoteForDate(CalendarDate date);
+    INote createNoteForDate(CalendarDate date);
     
 //    void removeNoteForDate(CalendarDate date);
 	void removeNote(CalendarDate date, String id);
 
-    Note getActiveNote();
+    INote getActiveNote();
     
     nu.xom.Document getXMLContent();
 

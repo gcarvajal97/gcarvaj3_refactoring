@@ -22,12 +22,8 @@ import javax.swing.event.CaretEvent;
 import javax.swing.text.Document;
 
 import memoranda.CurrentProject;
-import memoranda.interfaces.Note;
-import memoranda.interfaces.NoteList;
-import memoranda.interfaces.Project;
-import memoranda.interfaces.ProjectListener;
-import memoranda.interfaces.ResourcesList;
-import memoranda.interfaces.TaskList;
+import memoranda.interfaces.*;
+import memoranda.interfaces.INoteList;
 import memoranda.util.CurrentStorage;
 import memoranda.util.Local;
 
@@ -113,8 +109,8 @@ public class SearchPanel extends JPanel {
         jPanel4.add(wholeWCB, BorderLayout.NORTH);
         jPanel4.add(regexpCB, BorderLayout.CENTER);
         jPanel3.add(searchB, BorderLayout.SOUTH);
-        CurrentProject.addProjectListener(new ProjectListener() {
-            public void projectChange(Project p, NoteList nl, TaskList tl, ResourcesList rl) {
+        CurrentProject.addProjectListener(new IProjectListener() {
+            public void projectChange(IProject p, INoteList nl, ITaskList tl, IResourcesList rl) {
                 notesList.update(new Vector());
             }
             public void projectWasChanged() {}
@@ -164,13 +160,13 @@ public class SearchPanel extends JPanel {
         this.add(progressBar, BorderLayout.SOUTH);*/
         for (int i = 0; i < notes.size(); i++) {
             //progressBar.setValue(i);
-            Note note = (Note) notes.get(i);
-            Document doc = CurrentStorage.get().openNote(note);
+            INote INote = (INote) notes.get(i);
+            Document doc = CurrentStorage.get().openNote(INote);
             try {
                 String txt = doc.getText(0, doc.getLength());
                 Matcher matcher = pattern.matcher(txt);
                 if (matcher.find())
-                    found.add(note);
+                    found.add(INote);
             }
             catch (Exception ex) {
                 ex.printStackTrace();

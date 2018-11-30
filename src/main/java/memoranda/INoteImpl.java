@@ -1,5 +1,5 @@
 /**
- * NoteImpl.java
+ * INoteImpl.java
  * Created on 13.02.2003, 15:36:55 Alex
  * Package: net.sf.memoranda
  * 
@@ -9,30 +9,30 @@
 package memoranda;
 
 import memoranda.date.CalendarDate;
-import memoranda.interfaces.Note;
-import memoranda.interfaces.Project;
+import memoranda.interfaces.INote;
+import memoranda.interfaces.IProject;
 import nu.xom.Attribute;
 import nu.xom.Element;
 
 /**
  * 
  */
-/*$Id: NoteImpl.java,v 1.6 2004/10/06 19:15:44 ivanrise Exp $*/
-public class NoteImpl implements Note, Comparable {
+/*$Id: INoteImpl.java,v 1.6 2004/10/06 19:15:44 ivanrise Exp $*/
+public class INoteImpl implements INote, Comparable {
     
     private Element _el = null; 
-    private Project _project;
+    private IProject _I_project;
     
     /**
-     * Constructor for NoteImpl.
+     * Constructor for INoteImpl.
      */
-    public NoteImpl(Element el, Project project) {
+    public INoteImpl(Element el, IProject IProject) {
         _el = el;
-        _project = project;
+        _I_project = IProject;
     }
 
     /**
-     * @see Note#getDate()
+     * @see INote#getDate()
      */
     public CalendarDate getDate() {
 		Element day = (Element)_el.getParent();
@@ -47,11 +47,11 @@ public class NoteImpl implements Note, Comparable {
 
     }
     
-    public Project getProject() {
-        return _project;
+    public IProject getProject() {
+        return _I_project;
     }
     /**
-     * @see Note#getTitle()
+     * @see INote#getTitle()
      */
     public String getTitle() {
         Attribute ta = _el.getAttribute("title");
@@ -59,7 +59,7 @@ public class NoteImpl implements Note, Comparable {
         return _el.getAttribute("title").getValue();
     }
     /**
-     * @see Note#setTitle(java.lang.String)
+     * @see INote#setTitle(java.lang.String)
      */
     public void setTitle(String s) {
         Attribute ta = _el.getAttribute("title");
@@ -69,7 +69,7 @@ public class NoteImpl implements Note, Comparable {
     }
 	
 	/**
-     * @see Note#getId
+     * @see INote#getId
      */
 	
 	public String getId() {
@@ -79,7 +79,7 @@ public class NoteImpl implements Note, Comparable {
 	}
 	
 	/**
-     * @see Note#setId(java.lang.String)
+     * @see INote#setId(java.lang.String)
      */
 	 
 	public void setId(String s) {
@@ -87,13 +87,13 @@ public class NoteImpl implements Note, Comparable {
 		if(id==null) _el.addAttribute(new Attribute("refid", s));
 	}
     /**
-     * @see Note#isMarked()
+     * @see INote#isMarked()
      */
     public boolean isMarked() {
         return _el.getAttribute("bookmark") != null;        
     }
     /**
-     * @see Note#setMark(boolean)
+     * @see INote#setMark(boolean)
      */
     public void setMark(boolean mark) {
         Attribute ma = _el.getAttribute("bookmark");        
@@ -110,10 +110,10 @@ public class NoteImpl implements Note, Comparable {
 	 * Comparable interface
 	 */
 	public int compareTo(Object o) {
-		Note note = (Note) o;
-		boolean greaterThan = (getDate().getDate().getTime() > note.getDate()
+		INote INote = (INote) o;
+		boolean greaterThan = (getDate().getDate().getTime() > INote.getDate()
                 .getDate().getTime());
-		boolean lessThan = (getDate().getDate().getTime() < note.getDate()
+		boolean lessThan = (getDate().getDate().getTime() < INote.getDate()
                 .getDate()
                 .getTime());
 		if (greaterThan | lessThan) {

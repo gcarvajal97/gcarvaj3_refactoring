@@ -31,7 +31,7 @@ public class App {
 	private JFrame splash = null;
 
 	/*========================================================================*/ 
-	/* Note: Please DO NOT edit the version/build info manually!
+	/* INote: Please DO NOT edit the version/build info manually!
        The actual values are substituted by the Ant build script using 
        'version' property and datestamp.*/
 
@@ -117,17 +117,7 @@ public class App {
 		 */
 		/* Used to maximize the screen if the JVM Version if 1.4 or higher */
 		/* --------------------------------------------------------------- */
-		double JVMVer =
-			Double
-				.valueOf(System.getProperty("java.version").substring(0, 3))
-				.doubleValue();
-
-		frame.pack();
-		if (JVMVer >= 1.4) {
-			frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-		} else {
-			frame.setExtendedState(Frame.NORMAL);
-		}
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		/* --------------------------------------------------------------- */
 		/* Added By Jeremy Whitlock (jcscoobyrs) 07-Nov-2003 at 15:54:24 */
 

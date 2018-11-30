@@ -1,6 +1,6 @@
 package memoranda.ui.treetable;
 /*
- * MergeSort.java
+ * AMergeSort.java
  *
  * Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
  *
@@ -20,12 +20,12 @@ package memoranda.ui.treetable;
  */
 
 /**
- * An implementation of MergeSort, needs to be subclassed to
+ * An implementation of AMergeSort, needs to be subclassed to
  * compare the terms.
  *
  * @author Scott Violet
  */
-public abstract class MergeSort extends Object {
+public abstract class AMergeSort extends Object {
     protected Object           toSort[];
     protected Object           swapSpace[];
 

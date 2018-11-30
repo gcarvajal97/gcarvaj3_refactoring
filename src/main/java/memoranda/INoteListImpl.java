@@ -1,5 +1,5 @@
 /**
- * NoteListImpl.java
+ * INoteListImpl.java
  * Created on 21.02.2003, 15:43:26 Alex
  * Package: net.sf.memoranda
  * 
@@ -12,9 +12,9 @@ import java.util.Vector;
 
 import memoranda.date.CalendarDate;
 import memoranda.date.CurrentDate;
-import memoranda.interfaces.Note;
-import memoranda.interfaces.NoteList;
-import memoranda.interfaces.Project;
+import memoranda.interfaces.INote;
+import memoranda.interfaces.INoteList;
+import memoranda.interfaces.IProject;
 import memoranda.util.Util;
 import nu.xom.Attribute;
 import nu.xom.Document;
@@ -23,30 +23,30 @@ import nu.xom.Elements;
 /**
  * 
  */
-/*$Id: NoteListImpl.java,v 1.14 2004/10/28 11:30:15 alexeya Exp $*/
-public class NoteListImpl implements NoteList {
+/*$Id: INoteListImpl.java,v 1.14 2004/10/28 11:30:15 alexeya Exp $*/
+public class INoteListImpl implements INoteList {
 
-    private Project _project = null;
+    private IProject _I_project = null;
     private Document _doc = null;
     private Element _root = null;
 
 //    public static final String NS_JNNL = "http://www.openmechanics.org/2003/jnotes-noteslist";
 
     /**
-     * Constructor for NoteListImpl.
+     * Constructor for INoteListImpl.
      */
-    public NoteListImpl(Document doc, Project prj) {
+    public INoteListImpl(Document doc, IProject prj) {
         _doc = doc;
         _root = _doc.getRootElement();
-        _project = prj;
+        _I_project = prj;
     }
 
-    public NoteListImpl(Project prj) {
+    public INoteListImpl(IProject prj) {
     	
         //_root = new Element("noteslist", NS_JNNL);
         _root = new Element("noteslist");
         _doc = new Document(_root);
-        _project = prj;    
+        _I_project = prj;
     }
 
     public Collection getAllNotes() {
@@ -63,7 +63,7 @@ public class NoteListImpl implements NoteList {
 					Vector ns = d.getNotes();
 					for(int ni = 0; ni < ns.size(); ni++) {
 						NoteElement n = (NoteElement) ns.get(ni);
-						v.add(new NoteImpl(n.getElement(), _project));
+						v.add(new INoteImpl(n.getElement(), _I_project));
 					}
                 }
             }
@@ -72,7 +72,7 @@ public class NoteListImpl implements NoteList {
     }
     
     /**
-     * @see NoteList#getMarkedNotes()
+     * @see INoteList#getMarkedNotes()
      */
     public Collection getMarkedNotes() {
         Vector v = new Vector();
@@ -88,7 +88,7 @@ public class NoteListImpl implements NoteList {
 					Vector ns = d.getNotes();
 					for(int ni = 0; ni < ns.size(); ni++) {
 						NoteElement ne = (NoteElement) ns.get(ni);
-						Note n = new NoteImpl(ne.getElement(), _project);
+						INote n = new INoteImpl(ne.getElement(), _I_project);
 						if (n.isMarked()) v.add(n);
                 }
             }
@@ -116,7 +116,7 @@ public class NoteListImpl implements NoteList {
 								Vector ns = d.getNotes();
 								for(int ni = 0; ni < ns.size(); ni++) {
 									NoteElement n = (NoteElement) ns.get(ni);
-									v.add(new NoteImpl(n.getElement(), _project));
+									v.add(new INoteImpl(n.getElement(), _I_project));
 								}
 							}
                         }
@@ -130,24 +130,24 @@ public class NoteListImpl implements NoteList {
 	/**
 	 * returns the first note for a date.
 	 * @param CalendarDate
-	 * @return Note
+	 * @return INote
 	 */
 	 
-    public Note getNoteForDate(CalendarDate date) {
+    public INote getNoteForDate(CalendarDate date) {
         Day d = getDay(date);
         if (d == null)
             return null;
 		Vector ns = d.getNotes();
 		if(ns.size()>0) {
 			NoteElement n = (NoteElement) ns.get(0);
-			Note currentNote = new NoteImpl(n.getElement(), _project);
-			return currentNote; 
+			INote currentINote = new INoteImpl(n.getElement(), _I_project);
+			return currentINote;
 		}
 		return null;
-        //return new NoteImpl(d.getElement(), _project);
+        //return new INoteImpl(d.getElement(), _I_project);
     }
 
-    public Note createNoteForDate(CalendarDate date) {
+    public INote createNoteForDate(CalendarDate date) {
         Year y = getYear(date.getYear());
         if (y == null)
             y = createYear(date.getYear());
@@ -158,11 +158,11 @@ public class NoteListImpl implements NoteList {
         if (d == null) 
             d = m.createDay(date.getDay());
 		NoteElement ne = d.createNote(Util.generateId());
-        return new NoteImpl(ne.getElement(), _project);
+        return new INoteImpl(ne.getElement(), _I_project);
     }
     
      /*
-     * @see net.sf.memoranda.interfaces.NoteList#removeNoteForDate(net.sf.memoranda.date.CalendarDate)
+     * @see net.sf.memoranda.interfaces.INoteList#removeNoteForDate(net.sf.memoranda.date.CalendarDate)
      */
 /*    public void removeNoteForDate(CalendarDate date) {
         Day d = getDay(date);
@@ -182,7 +182,7 @@ public class NoteListImpl implements NoteList {
 //		CurrentNote.set(null);
     }
 	
-    public Note getActiveNote() {
+    public INote getActiveNote() {
         //return CurrentNote.get(); 
     	return getNoteForDate(CurrentDate.get());
     	// FIXED: Must return the first note for today [alexeya]
@@ -349,8 +349,8 @@ public class NoteListImpl implements NoteList {
             return new Integer(dEl.getAttribute("day").getValue()).intValue();
         }
 
-        /*public Note getNote() {
-            return new NoteImpl(dEl);
+        /*public INote getNote() {
+            return new INoteImpl(dEl);
         }*/
 		
 		public NoteElement getNote(String d) {
@@ -414,7 +414,7 @@ public class NoteListImpl implements NoteList {
 	}
 	
     /**
-     * @see NoteList#getXMLContent()
+     * @see INoteList#getXMLContent()
      */
     public Document getXMLContent() {
         return _doc;

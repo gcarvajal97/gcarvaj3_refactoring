@@ -51,7 +51,7 @@ public class TaskCalcDialog extends JDialog {
 	void jbInit() throws Exception {
 	    this.setResizable(false);
 		label1.setHorizontalAlignment(SwingConstants.RIGHT);
-		label1.setText(Local.getString("Calculate and update data for this task using data from sub tasks."));
+		label1.setText(Local.getString("Calculate and update data for this ITask using data from sub tasks."));
 		
 		gbc = new GridBagConstraints();
 		gbc.gridx = 1;
@@ -73,7 +73,7 @@ public class TaskCalcDialog extends JDialog {
 		gbc.gridx = 1; gbc.gridy = 3;
 		gbc.insets = new Insets(2, 0, 0, 10);
 		gbc.anchor = GridBagConstraints.WEST;
-		compactDatesChB.setText(Local.getString("Compact task dates based on sub task dates"));
+		compactDatesChB.setText(Local.getString("Compact ITask dates based on sub ITask dates"));
 //		compactDatesChB.addActionListener(new java.awt.event.ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 //				enSystrayChB_actionPerformed(e);
@@ -85,14 +85,14 @@ public class TaskCalcDialog extends JDialog {
 		gbc.insets = new Insets(2, 0, 0, 10);
 		gbc.anchor = GridBagConstraints.WEST;
 		generalPanel.add(compactDatesChB, gbc);
-		calcEffortChB.setText(Local.getString("Calculate task effort based on sub task efforts"));
+		calcEffortChB.setText(Local.getString("Calculate ITask effort based on sub ITask efforts"));
 		gbc = new GridBagConstraints();
 		gbc.gridx = 1;
 		gbc.gridy = 11;
 		gbc.insets = new Insets(2, 0, 0, 10);
 		gbc.anchor = GridBagConstraints.WEST;
 		generalPanel.add(calcEffortChB, gbc);
-		calcCompletionChB.setText(Local.getString("Calculate task completion based on sub task completion"));
+		calcCompletionChB.setText(Local.getString("Calculate ITask completion based on sub ITask completion"));
 		gbc = new GridBagConstraints();
 		gbc.gridx = 1;
 		gbc.gridy = 12;
