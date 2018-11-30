@@ -23,7 +23,7 @@ public class DefaultEventNotifier implements EventNotificationListener {
 	}
 
 	/**
-	 * @see main.java.memoranda.EventNotificationListener#eventIsOccured(main.java.memoranda.Event)
+	 * @see memoranda.EventNotificationListener#eventIsOccured(memoranda.Event)
 	 */
 	public void eventIsOccured(Event ev) {		
 		new EventNotificationDialog(
@@ -32,7 +32,7 @@ public class DefaultEventNotifier implements EventNotificationListener {
 			ev.getText());
 	}
 	/**
-	 * @see main.java.memoranda.EventNotificationListener#eventsChanged()
+	 * @see memoranda.EventNotificationListener#eventsChanged()
 	 */
 	public void eventsChanged() {
 		//

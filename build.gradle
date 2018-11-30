@@ -1,6 +1,6 @@
 apply plugin: 'application'
 
-mainClassName = 'main/java/memoranda/Start'
+mainClassName = 'memoranda/Start'
 
 compileJava.options.encoding = 'UTF-8'
 
