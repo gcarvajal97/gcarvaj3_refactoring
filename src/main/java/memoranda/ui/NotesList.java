@@ -77,29 +77,35 @@ public class NotesList extends JList {
 		}
     }
 
+    private void updateNotesAndUI(Vector notes){
+        Collections.sort(notes);
+        if (sortOrderDesc) {
+            Collections.reverse(notes);
+        }
+        updateUI();
+    }
+
     public void update(INoteList nl) {
         if (_type == ALL)
             notes = (Vector) nl.getAllNotes();
         else
             notes = (Vector) nl.getMarkedNotes();
-        
-//        Util.debug("No. of notes in noteList " + notes.size());
+
+
+        //TASK 2-1 SMELL WITHIN A CLASS
+        //Duplicate code:
+        // both update(INoteList nl) and update(Vector ns)
+        // utilized the same sort and updateUI methods, so this is unnecessary
+        // duplication.
+
+
+        //Util.debug("No. of notes in noteList " + notes.size());
         //NotesVectorSorter.sort(notes);
-		Collections.sort(notes);
-		if (sortOrderDesc) {
-			Collections.reverse(notes);		    
-		}
-        updateUI();
+		updateNotesAndUI(notes);
     }
 
     public void update(Vector ns) {
-        notes = ns;
-        // NotesVectorSorter.sort(notes);
-		Collections.sort(notes);
-		if (sortOrderDesc) {
-			Collections.reverse(notes);		    
-		}		
-        updateUI();
+        updateNotesAndUI(ns);
     }
 
     public INote getNote(int index){
